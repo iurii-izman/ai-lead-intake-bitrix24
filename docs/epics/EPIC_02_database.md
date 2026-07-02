@@ -24,6 +24,7 @@ Define persistence, queue records, and explicit request lifecycle states.
 - State transitions must be deterministic.
 - Keep schema portable for later PostgreSQL migration.
 - Do not expand scope without ADR updates.
+- Any model or migration decision outside this epic requires an ADR before implementation.
 
 ## Acceptance criteria
 - States are documented and enforced.
@@ -31,6 +32,7 @@ Define persistence, queue records, and explicit request lifecycle states.
 
 ## Definition of Done
 - Persistence design is testable and aligned with the TЗ.
+- The state machine is explicit and reviewable.
 
 ## Cursor prompt location
 `docs/prompts/02_database_cursor_prompt.md`

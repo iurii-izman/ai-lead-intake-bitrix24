@@ -24,6 +24,7 @@ Classify incoming requests into structured outputs suitable for routing.
 - Invalid output should fail into review.
 - Use Pydantic validation on the response.
 - No hidden manual branching in route handlers.
+- Any provider or schema expansion outside this epic needs an ADR before implementation.
 
 ## Acceptance criteria
 - Mock mode is deterministic.
@@ -31,6 +32,7 @@ Classify incoming requests into structured outputs suitable for routing.
 
 ## Definition of Done
 - AI output is stable, validated, and review-aware.
+- Mock and real provider behavior share the same contract.
 
 ## Cursor prompt location
 `docs/prompts/04_ai_classifier_cursor_prompt.md`

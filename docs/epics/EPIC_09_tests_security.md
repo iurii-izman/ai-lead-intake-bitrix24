@@ -23,12 +23,14 @@ Prove core behavior and enforce security constraints.
 - No real network calls.
 - Mock OpenAI and Bitrix24.
 - Cover failure and edge cases.
+- Any test-only request for new runtime behavior should be captured as an ADR or explicit scope change.
 
 ## Acceptance criteria
 - Tests pass cleanly and cover the critical flows.
 
 ## Definition of Done
 - Security behavior and core flows are both validated.
+- Tests run without external dependencies.
 
 ## Cursor prompt location
 `docs/prompts/09_tests_security_cursor_prompt.md`

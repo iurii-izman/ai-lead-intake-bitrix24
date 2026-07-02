@@ -25,6 +25,7 @@ Create the minimal runnable application skeleton, configuration layer, and healt
 - Keep the app thin and testable.
 - No business logic in route handlers.
 - Any new technology requires an ADR.
+- If the implementation needs scope beyond this epic, stop and update the ADR first.
 
 ## Acceptance criteria
 - App starts locally.
@@ -34,6 +35,7 @@ Create the minimal runnable application skeleton, configuration layer, and healt
 ## Definition of Done
 - Skeleton runs without feature code.
 - Tests cover the healthcheck and config basics.
+- No out-of-scope runtime modules are introduced.
 
 ## Cursor prompt location
 `docs/prompts/01_skeleton_cursor_prompt.md`

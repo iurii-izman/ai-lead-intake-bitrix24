@@ -24,6 +24,7 @@ Expose a safe intake endpoint that stores requests exactly once.
 - Keep the endpoint fast.
 - Return stable responses for duplicate keys.
 - Log intake events without exposing PII.
+- Any new request-shape or auth requirement outside the epic must be recorded in an ADR first.
 
 ## Acceptance criteria
 - Secret-protected intake works.
@@ -32,6 +33,7 @@ Expose a safe intake endpoint that stores requests exactly once.
 
 ## Definition of Done
 - Intake is safe, deterministic, and covered by tests.
+- Out-of-scope processing is not mixed into the endpoint.
 
 ## Cursor prompt location
 `docs/prompts/03_intake_api_cursor_prompt.md`

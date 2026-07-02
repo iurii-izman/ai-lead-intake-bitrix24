@@ -23,12 +23,14 @@ Prepare the project for portfolio review and safe publication.
 - Keep the disclaimer visible.
 - Ensure public-safe artifact hygiene.
 - Any packaging change with architectural impact needs ADR review.
+- Do not introduce new product scope under packaging work.
 
 ## Acceptance criteria
 - The repository can be reviewed safely and clearly.
 
 ## Definition of Done
 - The project is ready for GitHub, Notion, and hiring review.
+- Public-facing wording matches the implementation state.
 
 ## Cursor prompt location
 `docs/prompts/10_portfolio_packaging_cursor_prompt.md`

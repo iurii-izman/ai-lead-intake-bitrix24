@@ -2,6 +2,7 @@
 
 ## Context
 Implement a safe intake path that accepts requests exactly once.
+Inspect the existing repository state first and keep changes scoped to the intake path.
 
 ## Source of truth
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
@@ -10,9 +11,16 @@ Implement a safe intake path that accepts requests exactly once.
 Build the protected intake endpoint with validation and idempotency.
 
 ## Files to create/change
-- Intake route handlers
-- Request schema
-- Security and duplicate-check helpers
+- `app/api/intake.py` or equivalent route module
+- Intake request/response schemas
+- Webhook secret and idempotency helpers
+- Tests for success, duplicate, secret failure, and payload validation
+
+## Implementation constraints
+- Reject unauthorized requests before any persistence or business logic.
+- Return stable responses for duplicate idempotency keys.
+- Mask sensitive payload details in logs.
+- Do not invoke AI or Bitrix24 from this epic.
 
 ## Non-goals
 - No AI classification.
@@ -22,6 +30,7 @@ Build the protected intake endpoint with validation and idempotency.
 - Valid requests are accepted.
 - Invalid secrets are rejected.
 - Duplicate keys resolve to the existing record.
+- No out-of-scope processing is introduced.
 
 ## Final report format
 ## Done

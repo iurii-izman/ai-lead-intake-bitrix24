@@ -25,12 +25,14 @@ Provide a safe, masked operational UI for review and monitoring.
 - Mask email, phone, and secrets in views.
 - Keep the UI compact and readable.
 - Any UI architecture change needs an ADR.
+- Any new frontend paradigm outside this epic requires an ADR first.
 
 ## Acceptance criteria
 - Admin users can review and act on requests safely.
 
 ## Definition of Done
 - Dashboard is functional, masked, and authenticated.
+- Review actions work without exposing sensitive data.
 
 ## Cursor prompt location
 `docs/prompts/08_admin_dashboard_cursor_prompt.md`

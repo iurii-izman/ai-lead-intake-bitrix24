@@ -24,12 +24,14 @@ Orchestrate the end-to-end processing flow from queue to final state.
 - Preserve traceability across steps.
 - Keep retry semantics explicit.
 - No scope extension without ADR updates.
+- Any new orchestration primitive beyond this epic requires an ADR first.
 
 ## Acceptance criteria
 - Queue items move through the full pipeline predictably.
 
 ## Definition of Done
 - The MVP pipeline is observable and repeatable.
+- Retry and terminal states are covered by tests.
 
 ## Cursor prompt location
 `docs/prompts/07_worker_pipeline_cursor_prompt.md`

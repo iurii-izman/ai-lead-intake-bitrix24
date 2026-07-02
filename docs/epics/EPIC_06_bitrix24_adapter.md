@@ -24,12 +24,14 @@ Synchronize approved routing outcomes into Bitrix24 with isolated integration lo
 - Keep the adapter boundary strict.
 - Encode portal differences outside the business logic.
 - Any new integration shape must be justified by ADR.
+- If CRM semantics need to change beyond this epic, stop and update the ADR first.
 
 ## Acceptance criteria
 - CRM and task sync paths are isolated and testable.
 
 ## Definition of Done
 - Bitrix integration can be mocked or run against a real portal safely.
+- CRM and task sync are still isolated from the rest of the codebase.
 
 ## Cursor prompt location
 `docs/prompts/06_bitrix24_adapter_cursor_prompt.md`
