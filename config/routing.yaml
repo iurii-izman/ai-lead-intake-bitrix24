@@ -1,0 +1,76 @@
+defaults:
+  confidence_threshold: 0.75
+  default_responsible_id: 1
+  review_responsible_id: 1
+  task_deadline_hours: 24
+
+rules:
+  - id: "critical_complaint"
+    conditions:
+      category: "complaint"
+      priority: ["high", "critical"]
+    action:
+      responsible_id: 1
+      create_task: true
+      task_deadline_hours: 1
+      task_title: "⚠️ Срочная жалоба: {intent}"
+
+  - id: "integration_1c"
+    conditions:
+      category: "integration_1c"
+    action:
+      responsible_id: 2
+      create_task: true
+      task_deadline_hours: 4
+      task_title: "Интеграция с 1С: {intent}"
+
+  - id: "crm_implementation"
+    conditions:
+      category: "crm_implementation"
+    action:
+      responsible_id: 3
+      create_task: true
+      task_deadline_hours: 8
+      task_title: "Внедрение CRM: {intent}"
+
+  - id: "business_process_automation"
+    conditions:
+      category: "business_process_automation"
+    action:
+      responsible_id: 3
+      create_task: true
+      task_deadline_hours: 8
+      task_title: "Автоматизация процессов: {intent}"
+
+  - id: "ai_automation"
+    conditions:
+      category: "ai_automation"
+    action:
+      responsible_id: 4
+      create_task: true
+      task_deadline_hours: 8
+      task_title: "AI-автоматизация: {intent}"
+
+  - id: "support"
+    conditions:
+      category: "support"
+    action:
+      responsible_id: 5
+      create_task: true
+      task_deadline_hours: 4
+      task_title: "Поддержка: {intent}"
+
+  - id: "spam"
+    conditions:
+      category: "spam"
+    action:
+      drop: true
+      create_task: false
+
+  - id: "fallback"
+    conditions: {}
+    action:
+      responsible_id: 1
+      create_task: true
+      task_deadline_hours: 24
+      task_title: "Новая заявка: {intent}"

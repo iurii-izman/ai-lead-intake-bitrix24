@@ -10,6 +10,8 @@ from app.models.enums import (
 
 
 class ExtractedContact(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     name: str | None = None
     email: str | None = None
     phone: str | None = None
@@ -17,7 +19,7 @@ class ExtractedContact(BaseModel):
 
 
 class AIClassification(BaseModel):
-    model_config = ConfigDict(use_enum_values=True)
+    model_config = ConfigDict(use_enum_values=True, extra="forbid")
 
     category: AIClassificationCategory
     priority: AIClassificationPriority
