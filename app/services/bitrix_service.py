@@ -99,13 +99,15 @@ class BitrixService:
         intake_request: IntakeRequestRecord,
         classification: AIClassification,
         routing_decision: RoutingDecision,
+        *,
+        allow_human_override: bool = False,
     ) -> list[BitrixEntityResult]:
         if routing_decision.action != "route":
             raise BitrixServiceError(
                 f"Cannot sync Bitrix entities for action={routing_decision.action}"
             )
 
-        if (
+        if not allow_human_override and (
             classification.needs_human_review
             or classification.confidence < self.settings.confidence_threshold
         ):

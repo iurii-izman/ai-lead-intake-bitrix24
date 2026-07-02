@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="space-y-6">
+    <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-slate-950/40">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="space-y-2">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Operational view</p>
+          <h2 class="text-3xl font-semibold text-white">{{ page_heading }}</h2>
+          <p class="max-w-2xl text-sm leading-6 text-slate-300">{{ page_description }}</p>
+        </div>
+        <form class="grid gap-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4 sm:grid-cols-3" method="get">
+          <label class="space-y-1 text-sm">
+            <span class="text-slate-400">Status</span>
+            <select class="w-full rounded-xl border border-white/10 bg-slate-900 px-3 py-2 text-slate-100" name="status">
+              <option value="">All</option>
+              {% for candidate in ["received", "processing", "classified", "review_needed", "routed", "bitrix_syncing", "completed", "failed", "failed_retryable", "dropped", "duplicate"] %}
+                <option value="{{ candidate }}" {{ 'selected' if filters.status == candidate else '' }}>{{ candidate }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label class="space-y-1 text-sm">
+            <span class="text-slate-400">Source</span>
+            <input class="w-full rounded-xl border border-white/10 bg-slate-900 px-3 py-2 text-slate-100" name="source" value="{{ filters.source }}" placeholder="web_form">
+          </label>
+          <div class="flex items-end">
+            <button class="w-full rounded-xl bg-cyan-500 px-4 py-2.5 font-medium text-slate-950 hover:bg-cyan-400" type="submit">
+              Apply filters
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
+        {% for card in summary_cards %}
+          <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+            <p class="text-sm text-slate-400">{{ card.label }}</p>
+            <p class="mt-2 text-3xl font-semibold text-{{ card.tone }}-200">{{ card.value }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/60 shadow-2xl shadow-slate-950/40">
+      <div class="border-b border-white/10 px-6 py-4">
+        <h3 class="text-lg font-semibold text-white">Requests</h3>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-white/10 text-sm">
+          <thead class="bg-white/5 text-left text-slate-400">
+            <tr>
+              <th class="px-6 py-3 font-medium">ID</th>
+              <th class="px-6 py-3 font-medium">Date</th>
+              <th class="px-6 py-3 font-medium">Source</th>
+              <th class="px-6 py-3 font-medium">Category</th>
+              <th class="px-6 py-3 font-medium">Priority</th>
+              <th class="px-6 py-3 font-medium">Confidence</th>
+              <th class="px-6 py-3 font-medium">Status</th>
+              <th class="px-6 py-3 font-medium">Responsible</th>
+              <th class="px-6 py-3 font-medium">Bitrix</th>
+              <th class="px-6 py-3 font-medium">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10">
+            {% for item in requests %}
+              <tr class="hover:bg-white/5">
+                <td class="px-6 py-4 font-mono text-xs text-cyan-200">
+                  <a class="hover:underline" href="/admin/requests/{{ item.request_id }}">{{ item.request_id }}</a>
+                </td>
+                <td class="px-6 py-4 text-slate-300">{{ item.created_at }}</td>
+                <td class="px-6 py-4 text-slate-300">{{ item.source }}</td>
+                <td class="px-6 py-4 text-slate-300">{{ item.category or "—" }}</td>
+                <td class="px-6 py-4 text-slate-300">{{ item.priority or "—" }}</td>
+                <td class="px-6 py-4 text-slate-300">
+                  {{ "%.2f"|format(item.confidence) if item.confidence is not none else "—" }}
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex rounded-full px-3 py-1 text-xs font-medium ring-1 {{ item.status|status_badge_class }}">
+                    {{ item.status_label }}
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-slate-300">{{ item.responsible_id or "—" }}</td>
+                <td class="px-6 py-4 text-slate-300">{{ item.bitrix_summary }}</td>
+                <td class="px-6 py-4 text-slate-300">{{ item.action or "—" }}</td>
+              </tr>
+            {% else %}
+              <tr>
+                <td class="px-6 py-10 text-center text-slate-400" colspan="10">
+                  No requests match the current filters.
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
