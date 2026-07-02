@@ -27,6 +27,10 @@ class Settings(BaseSettings):
     bitrix24_webhook_url: str = ""
     bitrix24_base_url: str = ""
     bitrix_timeout_seconds: float = 30.0
+    worker_autostart: bool = False
+    worker_poll_interval_seconds: float = 2.0
+    worker_batch_size: int = 5
+    worker_max_retry_attempts: int = 3
 
 
 @lru_cache(maxsize=1)

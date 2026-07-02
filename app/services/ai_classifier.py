@@ -22,6 +22,8 @@ class AIClassificationResult:
     classification: AIClassification
     provider_name: str
     raw_response: str
+    fallback_used: bool = False
+    error_message: str | None = None
 
 
 class AIClassifier:
@@ -42,7 +44,9 @@ class AIClassifier:
 
     def _classify_or_fallback(self, intake_request: IntakeRequestCreate) -> AIClassificationResult:
         try:
-            raw_response = self.client.classify(intake_request, response_schema=self.response_schema)
+            raw_response = self.client.classify(
+                intake_request, response_schema=self.response_schema
+            )
             classification = self._validate_raw_output(raw_response)
             classification = self._apply_review_gate(classification)
         except Exception as exc:  # noqa: BLE001
@@ -52,11 +56,18 @@ class AIClassifier:
             )
             raw_response = fallback.model_dump_json()
             classification = fallback
+            fallback_used = True
+            error_message = str(exc)
+        else:
+            fallback_used = False
+            error_message = None
 
         return AIClassificationResult(
             classification=classification,
             provider_name=self.client.provider_name,
             raw_response=raw_response,
+            fallback_used=fallback_used,
+            error_message=error_message,
         )
 
     def _validate_raw_output(self, raw_response: str) -> AIClassification:
@@ -155,8 +166,13 @@ def _detect_priority(text: str, category: AIClassificationCategory) -> AIClassif
     return AIClassificationPriority.low
 
 
-def _detect_tone(category: AIClassificationCategory, priority: AIClassificationPriority) -> AIClassificationTone:
-    if priority == AIClassificationPriority.critical or category == AIClassificationCategory.complaint:
+def _detect_tone(
+    category: AIClassificationCategory, priority: AIClassificationPriority
+) -> AIClassificationTone:
+    if (
+        priority == AIClassificationPriority.critical
+        or category == AIClassificationCategory.complaint
+    ):
         return AIClassificationTone.urgent
     if category == AIClassificationCategory.partnership:
         return AIClassificationTone.friendly
@@ -175,14 +191,30 @@ def _detect_product_interest(text: str) -> str | None:
 
 def _build_intent(category: AIClassificationCategory) -> str:
     mapping = {
-        AIClassificationCategory.crm_implementation: "Client wants Bitrix24 CRM implementation support.",
-        AIClassificationCategory.integration_1c: "Client wants a Bitrix24 and 1C integration estimate.",
-        AIClassificationCategory.business_process_automation: "Client wants business process automation.",
-        AIClassificationCategory.ai_automation: "Client wants AI automation for CRM intake.",
-        AIClassificationCategory.support: "Client needs support for an existing request.",
-        AIClassificationCategory.partnership: "Client is asking about a partnership or cooperation.",
-        AIClassificationCategory.complaint: "Client is raising a complaint or issue.",
-        AIClassificationCategory.spam: "Message appears to be spam or irrelevant.",
+        AIClassificationCategory.crm_implementation: (
+            "Client wants Bitrix24 CRM implementation support."
+        ),
+        AIClassificationCategory.integration_1c: (
+            "Client wants a Bitrix24 and 1C integration estimate."
+        ),
+        AIClassificationCategory.business_process_automation: (
+            "Client wants business process automation."
+        ),
+        AIClassificationCategory.ai_automation: (
+            "Client wants AI automation for CRM intake."
+        ),
+        AIClassificationCategory.support: (
+            "Client needs support for an existing request."
+        ),
+        AIClassificationCategory.partnership: (
+            "Client is asking about a partnership or cooperation."
+        ),
+        AIClassificationCategory.complaint: (
+            "Client is raising a complaint or issue."
+        ),
+        AIClassificationCategory.spam: (
+            "Message appears to be spam or irrelevant."
+        ),
         AIClassificationCategory.other: "Client is making a general inquiry.",
     }
     return mapping[category]
@@ -190,14 +222,30 @@ def _build_intent(category: AIClassificationCategory) -> str:
 
 def _build_summary(category: AIClassificationCategory) -> str:
     mapping = {
-        AIClassificationCategory.crm_implementation: "The client is asking about Bitrix24 CRM implementation.",
-        AIClassificationCategory.integration_1c: "The client is interested in Bitrix24 and 1C integration.",
-        AIClassificationCategory.business_process_automation: "The client wants to automate a business process.",
-        AIClassificationCategory.ai_automation: "The client is asking about AI-driven automation.",
-        AIClassificationCategory.support: "The client needs support with a request or setup.",
-        AIClassificationCategory.partnership: "The client is interested in a partnership or cooperation.",
-        AIClassificationCategory.complaint: "The client is reporting a complaint or issue.",
-        AIClassificationCategory.spam: "The message appears to be spam or irrelevant.",
+        AIClassificationCategory.crm_implementation: (
+            "The client is asking about Bitrix24 CRM implementation."
+        ),
+        AIClassificationCategory.integration_1c: (
+            "The client is interested in Bitrix24 and 1C integration."
+        ),
+        AIClassificationCategory.business_process_automation: (
+            "The client wants to automate a business process."
+        ),
+        AIClassificationCategory.ai_automation: (
+            "The client is asking about AI-driven automation."
+        ),
+        AIClassificationCategory.support: (
+            "The client needs support with a request or setup."
+        ),
+        AIClassificationCategory.partnership: (
+            "The client is interested in a partnership or cooperation."
+        ),
+        AIClassificationCategory.complaint: (
+            "The client is reporting a complaint or issue."
+        ),
+        AIClassificationCategory.spam: (
+            "The message appears to be spam or irrelevant."
+        ),
         AIClassificationCategory.other: "The request is general and needs human review.",
     }
     return mapping[category]
