@@ -15,6 +15,18 @@ class Settings(BaseSettings):
     debug: bool = False
     database_url: str = "sqlite+pysqlite:///./ai_lead_intake.sqlite3"
     database_echo: bool = False
+    intake_webhook_secret: str = "dev-webhook-secret"
+    ai_provider: str = "mock"
+    openai_api_key: str = ""
+    openai_model: str = "gpt-4o-mini"
+    openai_base_url: str = "https://api.openai.com/v1"
+    openai_timeout_seconds: float = 30.0
+    confidence_threshold: float = 0.75
+    bitrix_mode: str = "mock"
+    bitrix_crm_mode: str = "universal"
+    bitrix24_webhook_url: str = ""
+    bitrix24_base_url: str = ""
+    bitrix_timeout_seconds: float = 30.0
 
 
 @lru_cache(maxsize=1)

@@ -1,0 +1,28 @@
+bitrix:
+  universal:
+    entity_type_id: 1
+    fields:
+      title: "title"
+      name: "name"
+      company: "companyTitle"
+      source_id: "sourceId"
+      source_description: "sourceDescription"
+      assigned_by_id: "assignedById"
+      comments: "comments"
+      ai_category: "ufCrmAiCategory"
+      ai_confidence: "ufCrmAiConfidence"
+      intake_id: "ufCrmIntakeId"
+
+  legacy:
+    fields:
+      title: "TITLE"
+      name: "NAME"
+      company: "COMPANY_TITLE"
+      source_id: "SOURCE_ID"
+      assigned_by_id: "ASSIGNED_BY_ID"
+      comments: "COMMENTS"
+      phone: "PHONE"
+      email: "EMAIL"
+      ai_category: "UF_CRM_AI_CATEGORY"
+      ai_confidence: "UF_CRM_AI_CONFIDENCE"
+      intake_id: "UF_CRM_INTAKE_ID"
