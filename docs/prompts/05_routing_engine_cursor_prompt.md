@@ -37,11 +37,20 @@ Implement rule-based routing with clear fallback behavior.
 ## Files changed
 - ...
 
+## Branch / commit / PR
+- Branch:
+- Commit:
+- Push:
+- PR:
+
 ## How to verify
 - ...
 
 ## Notes / assumptions
 - ...
+
+## Tree state
+- Working tree is clean at the end of the epic.
 
 ## Next step
 - EPIC 06 — Bitrix24 Adapter

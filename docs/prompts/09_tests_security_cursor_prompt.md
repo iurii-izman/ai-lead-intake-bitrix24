@@ -37,11 +37,20 @@ Add unit, integration, and security tests for the critical flows.
 ## Files changed
 - ...
 
+## Branch / commit / PR
+- Branch:
+- Commit:
+- Push:
+- PR:
+
 ## How to verify
 - ...
 
 ## Notes / assumptions
 - ...
+
+## Tree state
+- Working tree is clean at the end of the epic.
 
 ## Next step
 - EPIC 10 — Portfolio Packaging

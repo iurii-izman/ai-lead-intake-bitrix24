@@ -33,6 +33,8 @@ Classify incoming requests into structured outputs suitable for routing.
 ## Definition of Done
 - AI output is stable, validated, and review-aware.
 - Mock and real provider behavior share the same contract.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/04_ai_classifier_cursor_prompt.md`

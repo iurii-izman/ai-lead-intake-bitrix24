@@ -11,6 +11,7 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - `main` for stable merged work.
 - `dev` for integration work when needed.
 - `feature/<epic-name>` for a single epic at a time.
+- Epic work should land through a feature branch and draft PR, not directly into `main`.
 
 ## Commit convention
 - `docs:`
@@ -26,6 +27,7 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - Review scope before merge.
 - Run tests before merge.
 - Check docs and checklists before merge.
+- Finish with a clean working tree before handing off.
 
 ## Quality gates
 - Scope stays within the current epic.

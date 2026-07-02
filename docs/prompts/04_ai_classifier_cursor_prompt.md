@@ -39,11 +39,20 @@ Implement mock and real AI provider modes with strict output validation.
 ## Files changed
 - ...
 
+## Branch / commit / PR
+- Branch:
+- Commit:
+- Push:
+- PR:
+
 ## How to verify
 - ...
 
 ## Notes / assumptions
 - ...
+
+## Tree state
+- Working tree is clean at the end of the epic.
 
 ## Next step
 - EPIC 05 — Routing Engine

@@ -35,11 +35,20 @@ Polish the public-facing docs, disclaimer, and release hygiene artifacts.
 ## Files changed
 - ...
 
+## Branch / commit / PR
+- Branch:
+- Commit:
+- Push:
+- PR:
+
 ## How to verify
 - ...
 
 ## Notes / assumptions
 - ...
+
+## Tree state
+- Working tree is clean at the end of the epic.
 
 ## Next step
 - EPIC 00 or EPIC 01 depending on current state

@@ -32,6 +32,8 @@ Synchronize approved routing outcomes into Bitrix24 with isolated integration lo
 ## Definition of Done
 - Bitrix integration can be mocked or run against a real portal safely.
 - CRM and task sync are still isolated from the rest of the codebase.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/06_bitrix24_adapter_cursor_prompt.md`

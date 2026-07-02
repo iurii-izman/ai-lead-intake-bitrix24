@@ -33,6 +33,8 @@ Provide a safe, masked operational UI for review and monitoring.
 ## Definition of Done
 - Dashboard is functional, masked, and authenticated.
 - Review actions work without exposing sensitive data.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/08_admin_dashboard_cursor_prompt.md`

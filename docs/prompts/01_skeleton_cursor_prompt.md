@@ -44,11 +44,20 @@ Create the minimal application skeleton, settings layer, and healthcheck endpoin
 ## Files changed
 - ...
 
+## Branch / commit / PR
+- Branch:
+- Commit:
+- Push:
+- PR:
+
 ## How to verify
 - ...
 
 ## Notes / assumptions
 - ...
+
+## Tree state
+- Working tree is clean at the end of the epic.
 
 ## Next step
 - EPIC 02 — Database + State Machine

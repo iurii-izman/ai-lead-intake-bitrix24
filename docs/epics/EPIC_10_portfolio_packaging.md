@@ -31,6 +31,8 @@ Prepare the project for portfolio review and safe publication.
 ## Definition of Done
 - The project is ready for GitHub, Notion, and hiring review.
 - Public-facing wording matches the implementation state.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/10_portfolio_packaging_cursor_prompt.md`

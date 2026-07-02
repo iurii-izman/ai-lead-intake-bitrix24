@@ -39,6 +39,12 @@ The single source of truth is `docs/ai_lead_intake_bitrix24_tz_v1_0.md`.
 - Record architectural decisions in ADRs.
 - Keep the README disclaimer visible.
 
+## Delivery rules
+- Prefer `feature/<epic-name>` branches for epic work.
+- Finish each epic with a committed, pushed branch and a draft PR unless the user explicitly asks to merge directly.
+- Leave the working tree clean at the end of each epic.
+- Do not push epic work directly to `main` unless the user explicitly asks for that exception.
+
 ## Uncertainty handling
 - If the work would require scope expansion, stop and record the need in an ADR or in the notes.
 - If assumptions are needed, state them explicitly in the final report.

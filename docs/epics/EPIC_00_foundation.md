@@ -53,6 +53,8 @@ Prepare the documentation, operating rules, and delivery structure for the proje
 - `AGENTS.md`, `README.md`, and `.gitignore` created.
 - Foundation docs are internally consistent.
 - No scope creep into runtime implementation.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/00_foundation_cursor_prompt.md`

@@ -31,6 +31,8 @@ Prove core behavior and enforce security constraints.
 ## Definition of Done
 - Security behavior and core flows are both validated.
 - Tests run without external dependencies.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/09_tests_security_cursor_prompt.md`

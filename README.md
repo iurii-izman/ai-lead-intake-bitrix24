@@ -47,6 +47,9 @@ See [docs/implementation_plan.md](./docs/implementation_plan.md).
 ## Next step
 Start EPIC 01 using [docs/prompts/01_skeleton_cursor_prompt.md](./docs/prompts/01_skeleton_cursor_prompt.md).
 
+## Delivery rule
+Each epic should finish with a clean working tree, a committed feature branch, a pushed branch, and a draft PR unless a direct `main` push is explicitly requested.
+
 ## Disclaimer
 This is a demo/product prototype. It is not a commercial deployment.
 Architecture is production-capable; first delivery is portfolio/demo MVP.

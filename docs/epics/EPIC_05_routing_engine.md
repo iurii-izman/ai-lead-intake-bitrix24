@@ -32,6 +32,8 @@ Translate AI output into deterministic routing decisions.
 ## Definition of Done
 - Requests can be routed, reviewed, or dropped with traceable rules.
 - Rule evaluation is deterministic under test.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/05_routing_engine_cursor_prompt.md`

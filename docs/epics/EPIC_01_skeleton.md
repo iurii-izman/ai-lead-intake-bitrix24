@@ -36,6 +36,8 @@ Create the minimal runnable application skeleton, configuration layer, and healt
 - Skeleton runs without feature code.
 - Tests cover the healthcheck and config basics.
 - No out-of-scope runtime modules are introduced.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/01_skeleton_cursor_prompt.md`

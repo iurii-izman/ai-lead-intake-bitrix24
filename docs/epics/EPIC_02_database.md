@@ -33,6 +33,8 @@ Define persistence, queue records, and explicit request lifecycle states.
 ## Definition of Done
 - Persistence design is testable and aligned with the TЗ.
 - The state machine is explicit and reviewable.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/02_database_cursor_prompt.md`

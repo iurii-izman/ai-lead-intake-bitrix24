@@ -34,6 +34,8 @@ Expose a safe intake endpoint that stores requests exactly once.
 ## Definition of Done
 - Intake is safe, deterministic, and covered by tests.
 - Out-of-scope processing is not mixed into the endpoint.
+- Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
+- Working tree is clean at handoff.
 
 ## Cursor prompt location
 `docs/prompts/03_intake_api_cursor_prompt.md`
