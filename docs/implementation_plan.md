@@ -1,5 +1,7 @@
 # Implementation Plan
 
+Current repository state: EPIC 00 through EPIC 10 are complete for the current portfolio/demo scope. This plan remains as the staged delivery roadmap and historical record.
+
 ## EPIC 00 — Project Foundation
 - Goal: establish the documentation, governance, and delivery structure.
 - Expected output: docs tree, ADRs, prompts, rules, checklists, README draft, `.gitignore`.

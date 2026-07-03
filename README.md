@@ -6,7 +6,7 @@
 Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
 ## Status
-Project foundation is complete. Implementation proceeds by epics.
+All staged epics are complete for the current portfolio/demo scope. The repository is ready for publication and maintenance.
 
 ## What it is
 A production-capable core for intake, AI classification, smart routing, and Bitrix24 synchronization for incoming leads and requests.
@@ -41,7 +41,7 @@ Demo-first delivery with production-capable seams. The first working release is 
 ## Repository
 - GitHub: https://github.com/iurii-izman/ai-lead-intake-bitrix24
 - Default branch: `main`
-- Current stage: EPIC 00 complete, EPIC 01 next
+- Current stage: EPIC 10 complete, portfolio packaging finalized
 
 ## Documentation
 - [Technical specification](./docs/ai_lead_intake_bitrix24_tz_v1_0.md)
@@ -57,7 +57,7 @@ Demo-first delivery with production-capable seams. The first working release is 
 See [docs/implementation_plan.md](./docs/implementation_plan.md).
 
 ## Next step
-Start EPIC 01 using [docs/prompts/01_skeleton_cursor_prompt.md](./docs/prompts/01_skeleton_cursor_prompt.md).
+For future product hardening, start a new branch and document the scope separately.
 
 ## Delivery rule
 Each epic should finish with a clean working tree, a committed feature branch, a pushed branch, and a draft PR unless a direct `main` push is explicitly requested.
