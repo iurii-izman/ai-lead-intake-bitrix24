@@ -8,6 +8,7 @@ from app.api.intake import router as intake_router
 from app.config import get_settings
 from app.db.init_db import create_all
 from app.db.session import create_engine_from_settings, create_session_factory
+from app.security.rate_limit import InMemoryRateLimiter
 from app.services.worker import InProcessWorker
 
 
@@ -21,6 +22,10 @@ def create_app(settings=None) -> FastAPI:
         app.state.settings = resolved_settings
         app.state.engine = engine
         app.state.session_factory = create_session_factory(engine)
+        app.state.intake_rate_limiter = InMemoryRateLimiter(
+            max_requests=resolved_settings.intake_rate_limit_max_requests,
+            window_seconds=resolved_settings.intake_rate_limit_window_seconds,
+        )
         app.state.worker = None
         if resolved_settings.worker_autostart:
             worker = InProcessWorker(

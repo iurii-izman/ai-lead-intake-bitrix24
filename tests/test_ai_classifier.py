@@ -119,6 +119,7 @@ class ValidJsonClient:
             '"contact":{"name":"Ivan Petrov","email":"ivan.petrov@example.com",'
             '"phone":"+37360000000","company":"OOO Romashka"},'
             '"product_interest":"Bitrix24 CRM","suggested_tone":"formal",'
-            '"draft_reply":"Good day. Thank you for your message. We will review the request and get back with the next steps.",'
+            '"draft_reply":"Good day. Thank you for your message. '
+            'We will review the request and get back with the next steps.",'
             '"reasoning":"High confidence CRM implementation request.","needs_human_review":false}'
         )

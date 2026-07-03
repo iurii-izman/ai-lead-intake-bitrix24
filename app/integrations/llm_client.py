@@ -143,7 +143,10 @@ class OpenAILLMClient:
         )
 
         try:
-            with request.urlopen(http_request, timeout=self.settings.openai_timeout_seconds) as response:
+            with request.urlopen(
+                http_request,
+                timeout=self.settings.openai_timeout_seconds,
+            ) as response:
                 return json.loads(response.read().decode("utf-8"))
         except error.HTTPError as exc:
             raise LLMClientError(f"OpenAI request failed with HTTP {exc.code}") from exc
@@ -215,7 +218,10 @@ def _detect_category(text: str) -> AIClassificationCategory:
         return AIClassificationCategory.spam
     if any(keyword in text for keyword in ("1c", "1с", "bitrix24 + 1c", "битрикс24 и 1с")):
         return AIClassificationCategory.integration_1c
-    if any(keyword in text for keyword in ("crm", "внедрен", "внедрить crm", "bitrix24", "битрикс24")):
+    if any(
+        keyword in text
+        for keyword in ("crm", "внедрен", "внедрить crm", "bitrix24", "битрикс24")
+    ):
         return AIClassificationCategory.crm_implementation
     if any(keyword in text for keyword in ("процесс", "workflow", "автоматизац", "бизнес-процесс")):
         return AIClassificationCategory.business_process_automation
@@ -254,10 +260,19 @@ def _detect_confidence(text: str, category: AIClassificationCategory) -> float:
         AIClassificationCategory.integration_1c,
         AIClassificationCategory.ai_automation,
     }:
-        return 0.93 if any(keyword in text for keyword in ("интеграц", "integration", "внедрен", "автоматизац")) else 0.82
+        if any(
+            keyword in text
+            for keyword in ("интеграц", "integration", "внедрен", "автоматизац")
+        ):
+            return 0.93
+        return 0.82
     if category == AIClassificationCategory.business_process_automation:
         return 0.8
-    if category in {AIClassificationCategory.complaint, AIClassificationCategory.support, AIClassificationCategory.partnership}:
+    if category in {
+        AIClassificationCategory.complaint,
+        AIClassificationCategory.support,
+        AIClassificationCategory.partnership,
+    }:
         return 0.77
     return 0.6
 
@@ -272,8 +287,15 @@ def _detect_product_interest(text: str) -> str | None:
     return None
 
 
-def _detect_tone(category: AIClassificationCategory, priority: AIClassificationPriority, text: str) -> AIClassificationTone:
-    if priority == AIClassificationPriority.critical or category == AIClassificationCategory.complaint:
+def _detect_tone(
+    category: AIClassificationCategory,
+    priority: AIClassificationPriority,
+    text: str,
+) -> AIClassificationTone:
+    if (
+        priority == AIClassificationPriority.critical
+        or category == AIClassificationCategory.complaint
+    ):
         return AIClassificationTone.urgent
     if any(keyword in text for keyword in ("спасибо", "thanks", "сотруднич", "partner")):
         return AIClassificationTone.friendly
@@ -352,5 +374,12 @@ def _build_draft_reply(
     )
 
 
-def _build_reasoning(category: AIClassificationCategory, priority: AIClassificationPriority, confidence: float) -> str:
-    return f"Matched {category.value} with {priority.value} priority at confidence {confidence:.2f}."
+def _build_reasoning(
+    category: AIClassificationCategory,
+    priority: AIClassificationPriority,
+    confidence: float,
+) -> str:
+    return (
+        f"Matched {category.value} with {priority.value} priority "
+        f"at confidence {confidence:.2f}."
+    )

@@ -27,6 +27,25 @@ def build_test_client(tmp_path: Path) -> TestClient:
     return TestClient(app)
 
 
+def build_rate_limited_test_client(
+    tmp_path: Path,
+    *,
+    max_requests: int,
+    window_seconds: int = 60,
+) -> TestClient:
+    database_url = f"sqlite+pysqlite:///{tmp_path / 'rate-limit.sqlite3'}"
+    settings = Settings(
+        database_url=database_url,
+        intake_webhook_secret="test-secret",
+        debug=False,
+        database_echo=False,
+        intake_rate_limit_max_requests=max_requests,
+        intake_rate_limit_window_seconds=window_seconds,
+    )
+    app = create_app(settings=settings)
+    return TestClient(app)
+
+
 def get_session(client: TestClient):
     session_factory = create_session_factory(client.app.state.engine)
     return session_factory()
@@ -162,4 +181,43 @@ def test_intake_rejects_blank_message(tmp_path):
         )
 
         assert response.status_code == 422
+
+
+def test_intake_rate_limit_returns_429(tmp_path):
+    client = build_rate_limited_test_client(tmp_path, max_requests=2)
+
+    with client:
+        payload = {
+            "source": "web_form",
+            "message": "Need Bitrix24 integration",
+        }
+
+        first = client.post(
+            "/api/v1/intake",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={**payload, "idempotency_key": "site-form-20260703-rl-1"},
+        )
+        second = client.post(
+            "/api/v1/intake",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={**payload, "idempotency_key": "site-form-20260703-rl-2"},
+        )
+        third = client.post(
+            "/api/v1/intake",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={**payload, "idempotency_key": "site-form-20260703-rl-3"},
+        )
+
+        assert first.status_code == 202
+        assert second.status_code == 202
+        assert third.status_code == 429
+        assert third.json()["detail"] == "Rate limit exceeded"
+        assert 1 <= int(third.headers["retry-after"]) <= 60
+
+        with get_session(client) as session:
+            requests = session.scalars(select(IntakeRequestRecord)).all()
+            logs = session.scalars(select(ProcessingLogRecord)).all()
+
+            assert len(requests) == 2
+            assert len(logs) == 2
 

@@ -7,7 +7,7 @@ import logging
 import secrets
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Response, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Request, Response, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
@@ -18,6 +18,7 @@ from app.models.enums import RequestStatus
 from app.models.intake_request import IntakeRequestRecord
 from app.models.processing_log import ProcessingLogRecord
 from app.schemas.intake import IntakeRequestCreate, IntakeRequestResponse
+from app.security.rate_limit import enforce_rate_limit
 
 router = APIRouter(prefix="/api/v1/intake", tags=["intake"])
 logger = logging.getLogger(__name__)
@@ -57,6 +58,7 @@ def build_request_response(record: IntakeRequestRecord) -> IntakeRequestResponse
 
 @router.post("", response_model=IntakeRequestResponse, status_code=status.HTTP_202_ACCEPTED)
 def create_intake_request(
+    request: Request,
     payload: IntakeRequestCreate,
     response: Response,
     db: Annotated[Session, Depends(get_db_session)],
@@ -68,6 +70,8 @@ def create_intake_request(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid webhook secret",
         )
+
+    enforce_rate_limit(request)
 
     existing = db.scalar(
         select(IntakeRequestRecord).where(

@@ -4,7 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from app.models.enums import AIClassificationCategory, AIClassificationPriority, AIClassificationTone
+from app.models.enums import (
+    AIClassificationCategory,
+    AIClassificationPriority,
+    AIClassificationTone,
+)
 from app.schemas.classification import AIClassification, ExtractedContact
 from app.services.routing_engine import RoutingEngine
 

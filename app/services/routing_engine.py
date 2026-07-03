@@ -112,7 +112,11 @@ class RoutingEngine:
 
         return self._fallback_decision(classification)
 
-    def _decision_from_rule(self, rule: RoutingRule, classification: AIClassification) -> RoutingDecision:
+    def _decision_from_rule(
+        self,
+        rule: RoutingRule,
+        classification: AIClassification,
+    ) -> RoutingDecision:
         action = rule.action
         if action.drop:
             return RoutingDecision(

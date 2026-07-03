@@ -23,3 +23,12 @@ def test_get_settings_is_cached(monkeypatch):
     assert first is second
     assert first.app_name == "Cached Intake"
 
+
+def test_rate_limit_settings_load_from_environment(monkeypatch):
+    monkeypatch.setenv("INTAKE_RATE_LIMIT_MAX_REQUESTS", "7")
+    monkeypatch.setenv("INTAKE_RATE_LIMIT_WINDOW_SECONDS", "15")
+
+    settings = Settings()
+
+    assert settings.intake_rate_limit_max_requests == 7
+    assert settings.intake_rate_limit_window_seconds == 15

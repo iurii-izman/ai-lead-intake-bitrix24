@@ -10,6 +10,7 @@ Expose a safe intake endpoint that stores requests exactly once.
 - Protected intake endpoint.
 - Input validation.
 - Idempotency handling.
+- Intake rate limiting.
 
 ## Out of scope
 - AI and Bitrix processing.
@@ -24,12 +25,14 @@ Expose a safe intake endpoint that stores requests exactly once.
 - Keep the endpoint fast.
 - Return stable responses for duplicate keys.
 - Log intake events without exposing PII.
+- Keep rate limiting separate from business logic so the endpoint stays thin.
 - Any new request-shape or auth requirement outside the epic must be recorded in an ADR first.
 
 ## Acceptance criteria
 - Secret-protected intake works.
 - Duplicates are recognized.
 - Invalid payloads are rejected cleanly.
+- Rate limit returns `429` without creating new records.
 
 ## Definition of Done
 - Intake is safe, deterministic, and covered by tests.

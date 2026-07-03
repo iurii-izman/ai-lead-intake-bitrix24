@@ -29,6 +29,8 @@ class Settings(BaseSettings):
     bitrix_timeout_seconds: float = 30.0
     admin_username: str = "admin"
     admin_password: str = "change-me"
+    intake_rate_limit_max_requests: int = 30
+    intake_rate_limit_window_seconds: int = 60
     worker_autostart: bool = False
     worker_poll_interval_seconds: float = 2.0
     worker_batch_size: int = 5
