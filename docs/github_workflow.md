@@ -39,3 +39,4 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - Confirm screenshots are masked.
 - Confirm README disclaimer is present.
 - Confirm demo data is synthetic.
+- Use [docs/release_note.md](./release_note.md) as the canonical public-safe release text.

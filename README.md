@@ -32,6 +32,7 @@ See [docs/architecture.md](./docs/architecture.md).
 ## Public-safe packaging
 - [Portfolio publication checklist](./docs/checklists/portfolio_publication_checklist.md)
 - [Release checklist](./docs/checklists/release_checklist.md)
+- [Release note](./docs/release_note.md)
 - [Notion case structure](./docs/notion_case.md)
 - [Screenshot plan](./docs/screenshots_plan.md)
 
