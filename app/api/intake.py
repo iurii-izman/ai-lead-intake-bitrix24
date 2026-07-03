@@ -5,15 +5,15 @@ from __future__ import annotations
 import json
 import logging
 import secrets
-from collections.abc import Iterator
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Request, Response, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Response, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from app.config import Settings, get_settings
+from app.config import Settings
+from app.dependencies import get_app_settings, get_db_session
 from app.models.enums import RequestStatus
 from app.models.intake_request import IntakeRequestRecord
 from app.models.processing_log import ProcessingLogRecord
@@ -23,22 +23,6 @@ router = APIRouter(prefix="/api/v1/intake", tags=["intake"])
 logger = logging.getLogger(__name__)
 
 SENSITIVE_FIELDS = {"email", "phone", "name", "company", "message"}
-
-
-def get_app_settings(request: Request) -> Settings:
-    return getattr(request.app.state, "settings", get_settings())
-
-
-def get_db_session(request: Request) -> Iterator[Session]:
-    session_factory = getattr(request.app.state, "session_factory", None)
-    if session_factory is None:
-        raise RuntimeError("Database session factory is not initialized.")
-
-    session = session_factory()
-    try:
-        yield session
-    finally:
-        session.close()
 
 
 def is_valid_webhook_secret(provided: str | None, expected: str) -> bool:

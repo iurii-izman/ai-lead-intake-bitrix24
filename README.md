@@ -1,9 +1,12 @@
 # AI Lead Intake для Битрикс24
 
+> Demo case / product prototype. This is not a commercial deployment.
+> The architecture is production-capable; the first delivery is a portfolio/demo MVP.
+
 Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
 ## Status
-Project foundation is complete. Implementation will proceed by epics.
+Project foundation is complete. Implementation proceeds by epics.
 
 ## What it is
 A production-capable core for intake, AI classification, smart routing, and Bitrix24 synchronization for incoming leads and requests.
@@ -16,15 +19,24 @@ A production-capable core for intake, AI classification, smart routing, and Bitr
 - Idempotency and retry thinking
 - PII masking and operational hygiene
 
+## What is intentionally excluded from the public repo
+- Real client PII
+- Secrets and `.env` files
+- Commercial claims about a live deployment
+- SaaS, multitenancy, OAuth marketplace packaging
+- React/Celery/Kafka/RabbitMQ in the MVP
+
 ## Architecture
 See [docs/architecture.md](./docs/architecture.md).
 
-## Development approach
-Production-capable architecture with demo-first delivery. The first working release is a portfolio/demo MVP, not a commercial deployment.
+## Public-safe packaging
+- [Portfolio publication checklist](./docs/checklists/portfolio_publication_checklist.md)
+- [Release checklist](./docs/checklists/release_checklist.md)
+- [Notion case structure](./docs/notion_case.md)
+- [Screenshot plan](./docs/screenshots_plan.md)
 
-## Demo vs Production
-This is a demo/product prototype. It is not a commercial deployment.
-Architecture is production-capable; first delivery is portfolio/demo MVP.
+## Development approach
+Demo-first delivery with production-capable seams. The first working release is a portfolio/demo MVP, not a commercial deployment.
 
 ## Repository
 - GitHub: https://github.com/iurii-izman/ai-lead-intake-bitrix24
