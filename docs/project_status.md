@@ -19,7 +19,7 @@
 | EPIC 07 — Worker Pipeline | Complete | In-process worker orchestrates intake → AI → routing → Bitrix → final states and is covered by pipeline tests. |
 | EPIC 08 — Admin Dashboard | Complete | Basic Auth admin UI, request detail, review actions, settings snapshot, and masking are implemented and tested. |
 | EPIC 09 — Tests + Security | Complete | Test suite and security hygiene checks are present; current local baseline is green under `pytest` and `ruff`. |
-| EPIC 10 — Portfolio Packaging | Partial | Public-facing docs exist, but packaging is the main remaining hardening area. |
+| EPIC 10 — Portfolio Packaging | Complete | README, public-safe docs, release assets, synthetic demo data, and seed helper are present and verified. |
 
 ## Verified baseline
 
@@ -33,7 +33,7 @@ This file now tracks the actual repository baseline rather than the earlier stag
 
 ## Current priority
 
-Finish EPIC 10 — Portfolio Packaging and publication hygiene, then use the prompts in audit-and-gap-closure mode instead of recreate-from-scratch mode.
+Maintain the validated baseline, close any verified bugs or acceptance gaps, and use the prompts in audit-and-gap-closure mode instead of recreate-from-scratch mode.
 
 ## Important instruction for future agents
 
@@ -48,10 +48,6 @@ For EPIC 02–09, treat the existing code as the baseline and work in this order
 
 The Bitrix24 adapter boundary already exists and must only be refined or extended through the existing service and client seams.
 
-## Next recommended epic
+## Next recommended work
 
-EPIC 10 — Portfolio Packaging.
-
-Prompt:
-
-`docs/prompts/10_portfolio_packaging_cursor_prompt.md`
+Post-MVP maintenance, presentation polish, or targeted hardening based on verified gaps.

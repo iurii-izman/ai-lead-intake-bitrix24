@@ -12,7 +12,7 @@ Current repository baseline:
 - EPIC 01 — complete
 - EPIC 01.5 — complete
 - EPIC 02–09 — implemented and passing current local checks
-- EPIC 10 — packaging and publication hardening
+- EPIC 10 — complete
 
 Validated local baseline:
 - `pytest -q`
@@ -70,6 +70,8 @@ Or on Unix-like shells:
 cp .env.example .env
 ```
 
+The Docker Compose setup reads `.env`, not `.env.example`, so this copy step is required for the containerized demo path.
+
 ### 2. Start locally
 
 ```bash
@@ -81,7 +83,7 @@ Or run without Docker:
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
-pip install -e .[dev] ruff
+pip install -e .[dev]
 uvicorn app.main:app --reload
 ```
 
@@ -123,6 +125,7 @@ These modes are present for architecture completeness, but the repository is sti
 Primary public endpoint:
 
 - `POST /api/v1/intake`
+- `GET /api/v1/intake/{request_id}`
 
 Current behavior:
 - validates payload shape;
@@ -130,7 +133,8 @@ Current behavior:
 - enforces idempotency by `idempotency_key`;
 - rate-limits repeated submissions;
 - stores masked request data and processing log;
-- returns quickly without waiting for downstream processing.
+- returns quickly without waiting for downstream processing;
+- allows a protected lookup of the stored intake record by `request_id`.
 
 Example request:
 

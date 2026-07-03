@@ -124,6 +124,69 @@ def test_intake_replays_duplicate_idempotency_key(tmp_path):
             assert len(logs) == 1
 
 
+def test_intake_get_returns_existing_request(tmp_path):
+    client = build_test_client(tmp_path)
+
+    with client:
+        created = client.post(
+            "/api/v1/intake",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "idempotency_key": "site-form-20260703-0002-get",
+                "source": "web_form",
+                "message": "Need Bitrix24 integration",
+            },
+        )
+
+        request_id = created.json()["request_id"]
+        fetched = client.get(
+            f"/api/v1/intake/{request_id}",
+            headers={"X-Webhook-Secret": "test-secret"},
+        )
+
+        assert created.status_code == 202
+        assert fetched.status_code == 200
+        assert fetched.json()["request_id"] == request_id
+        assert fetched.json()["status"] == "received"
+
+
+def test_intake_get_requires_valid_secret(tmp_path):
+    client = build_test_client(tmp_path)
+
+    with client:
+        created = client.post(
+            "/api/v1/intake",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "idempotency_key": "site-form-20260703-0002-get-auth",
+                "source": "web_form",
+                "message": "Need Bitrix24 integration",
+            },
+        )
+
+        request_id = created.json()["request_id"]
+        fetched = client.get(
+            f"/api/v1/intake/{request_id}",
+            headers={"X-Webhook-Secret": "wrong-secret"},
+        )
+
+        assert fetched.status_code == 401
+        assert fetched.json()["detail"] == "Invalid webhook secret"
+
+
+def test_intake_get_returns_404_for_unknown_request(tmp_path):
+    client = build_test_client(tmp_path)
+
+    with client:
+        response = client.get(
+            "/api/v1/intake/unknown-request-id",
+            headers={"X-Webhook-Secret": "test-secret"},
+        )
+
+        assert response.status_code == 404
+        assert response.json()["detail"] == "Request not found"
+
+
 def test_intake_rejects_invalid_secret(tmp_path):
     client = build_test_client(tmp_path)
 

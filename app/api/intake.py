@@ -135,3 +135,26 @@ def create_intake_request(
         },
     )
     return build_request_response(record)
+
+
+@router.get("/{request_id}", response_model=IntakeRequestResponse)
+def get_intake_request(
+    request_id: str,
+    db: Annotated[Session, Depends(get_db_session)],
+    settings: Annotated[Settings, Depends(get_app_settings)],
+    x_webhook_secret: Annotated[str | None, Header(alias="X-Webhook-Secret")] = None,
+) -> IntakeRequestResponse:
+    if not is_valid_webhook_secret(x_webhook_secret, settings.intake_webhook_secret):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid webhook secret",
+        )
+
+    record = db.get(IntakeRequestRecord, request_id)
+    if record is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Request not found",
+        )
+
+    return build_request_response(record)

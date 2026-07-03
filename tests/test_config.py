@@ -32,3 +32,12 @@ def test_rate_limit_settings_load_from_environment(monkeypatch):
 
     assert settings.intake_rate_limit_max_requests == 7
     assert settings.intake_rate_limit_window_seconds == 15
+
+
+def test_legacy_rate_limit_setting_is_supported(monkeypatch):
+    monkeypatch.setenv("RATE_LIMIT_INTAKE", "10/minute")
+
+    settings = Settings()
+
+    assert settings.intake_rate_limit_max_requests == 10
+    assert settings.intake_rate_limit_window_seconds == 60

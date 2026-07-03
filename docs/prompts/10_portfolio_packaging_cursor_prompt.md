@@ -3,7 +3,8 @@
 ## Context
 Prepare the project for safe GitHub and portfolio publication.
 Inspect the current repository state before editing and keep packaging changes public-safe.
-This is the main remaining open epic in the current repository baseline.
+This epic is complete in the current repository baseline.
+Use it in audit-and-polish mode for future presentation or publication refinements.
 
 ## Source of truth
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`

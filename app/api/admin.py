@@ -137,7 +137,10 @@ def approve_request(
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
-    service.approve_request(db, request_id)
+    try:
+        service.approve_request(db, request_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
         url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
     )
@@ -150,7 +153,10 @@ def retry_request(
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
-    service.retry_request(db, request_id)
+    try:
+        service.retry_request(db, request_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
         url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
     )
@@ -163,7 +169,10 @@ def drop_request(
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
-    service.drop_request(db, request_id)
+    try:
+        service.drop_request(db, request_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
         url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
     )
@@ -176,7 +185,10 @@ def reprocess_ai_request(
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
-    service.reprocess_ai_request(db, request_id)
+    try:
+        service.reprocess_ai_request(db, request_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
         url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
     )

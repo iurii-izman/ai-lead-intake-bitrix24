@@ -36,19 +36,18 @@ Prepare the project for portfolio review and safe publication.
 
 ## Actual completion status
 
-Status: partial.
+Status: complete.
 
-Already present:
+Delivered:
 - README draft;
 - architecture and notion-case docs;
 - screenshots plan;
 - release note artifact;
 - publication-oriented checklists.
-
-Remaining focus:
-- reconcile all public docs with the actual implemented baseline;
-- add any missing demo/publication-safe assets that are explicitly part of EPIC 10;
-- verify the repo is presentation-ready without overstating production readiness.
+- final README aligned with the implemented baseline;
+- synthetic demo seed data;
+- local seed helper script;
+- verified public-safe packaging posture without overstating production readiness.
 
 ## Cursor prompt location
 `docs/prompts/10_portfolio_packaging_cursor_prompt.md`

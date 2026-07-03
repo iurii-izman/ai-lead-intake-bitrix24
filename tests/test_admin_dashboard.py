@@ -152,6 +152,54 @@ def create_approved_request(session: Session) -> IntakeRequestRecord:
     return request
 
 
+def create_dropped_request(session: Session) -> IntakeRequestRecord:
+    request = IntakeRequestRecord(
+        idempotency_key="site-form-admin-0003",
+        source="web_form",
+        raw_payload_masked='{"message":"masked"}',
+        raw_text="Need Bitrix24 CRM implementation support after drop.",
+        status=RequestStatus.dropped,
+    )
+    session.add(request)
+    session.flush()
+
+    session.add(
+        AIClassificationRecord(
+            intake_id=request.id,
+            category=AIClassificationCategory.crm_implementation,
+            priority=AIClassificationPriority.high,
+            confidence=0.88,
+            intent="Client wants Bitrix24 CRM implementation support.",
+            summary="The client is asking about Bitrix24 CRM implementation.",
+            contact_name="Ivan Petrov",
+            contact_email_masked="ivan.petrov@example.com",
+            contact_phone_masked="+37360000000",
+            company="OOO Romashka",
+            product_interest="Bitrix24 CRM",
+            suggested_tone=AIClassificationTone.formal,
+            needs_human_review=False,
+            draft_reply="Good day. Thank you for your message.",
+            reasoning="Dropped manually but classification is reusable.",
+            model_used="mock",
+            raw_ai_response='{"mock":"response"}',
+        )
+    )
+    session.add(
+        RoutingDecisionRecord(
+            intake_id=request.id,
+            rule_id="spam",
+            responsible_id=None,
+            action="drop",
+            create_task=False,
+            task_deadline_hours=None,
+            task_title=None,
+        )
+    )
+    session.commit()
+    session.refresh(request)
+    return request
+
+
 def test_admin_dashboard_requires_basic_auth(tmp_path: Path) -> None:
     client = build_test_client(tmp_path)
 
@@ -209,6 +257,44 @@ def test_admin_approve_review_creates_bitrix_entities(tmp_path: Path) -> None:
         assert len(bitrix_entities) == 2
         assert {log.event for log in logs} >= {
             "admin_approved",
+            "bitrix_sync_started",
+            "bitrix_lead_created",
+            "bitrix_task_created",
+            "completed",
+        }
+
+
+def test_admin_reprocess_dropped_request_completes_pipeline(tmp_path: Path) -> None:
+    client = build_test_client(tmp_path)
+
+    with client:
+        with get_session(client) as session:
+            request = create_dropped_request(session)
+
+        response = client.post(
+            f"/admin/requests/{request.id}/reprocess-ai",
+            headers=auth_headers(),
+            follow_redirects=False,
+        )
+
+        assert response.status_code == 303
+
+        with get_session(client) as session:
+            stored_request = session.get(IntakeRequestRecord, request.id)
+            bitrix_entities = session.scalars(
+                select(BitrixEntityRecord).where(BitrixEntityRecord.intake_id == request.id)
+            ).all()
+            logs = session.scalars(
+                select(ProcessingLogRecord).where(ProcessingLogRecord.intake_id == request.id)
+            ).all()
+
+        assert stored_request is not None
+        assert stored_request.status == RequestStatus.completed
+        assert len(bitrix_entities) == 2
+        assert {log.event for log in logs} >= {
+            "admin_reprocess_started",
+            "ai_reprocessed",
+            "routed",
             "bitrix_sync_started",
             "bitrix_lead_created",
             "bitrix_task_created",

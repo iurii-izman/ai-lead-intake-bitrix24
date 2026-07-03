@@ -487,12 +487,16 @@ class AdminDashboardService:
         record = self._get_request_or_raise(session, request_id)
         if record.status == RequestStatus.completed:
             raise ValueError("Completed requests cannot be reprocessed")
-        if record.status not in {RequestStatus.review_needed, RequestStatus.failed_retryable}:
+        if record.status not in {
+            RequestStatus.review_needed,
+            RequestStatus.failed_retryable,
+            RequestStatus.dropped,
+        }:
             raise ValueError(
-                "Reprocess AI is only available for review-needed or retryable requests"
+                "Reprocess AI is only available for review-needed, dropped, or retryable requests"
             )
 
-        if record.status == RequestStatus.review_needed:
+        if record.status in {RequestStatus.review_needed, RequestStatus.dropped}:
             self._transition(
                 session,
                 record,
@@ -867,7 +871,7 @@ class AdminDashboardService:
             actions.extend(["retry", "reprocess_ai", "drop"])
         elif status == RequestStatus.dropped:
             actions.append("reprocess_ai")
-        else:
+        elif status != RequestStatus.completed:
             actions.append("drop")
         return actions
 

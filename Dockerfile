@@ -13,6 +13,7 @@ COPY config ./config
 COPY docs ./docs
 
 RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -e ".[dev]"
+RUN mkdir -p /app/data && chown -R app:app /app/data
 
 USER app
 

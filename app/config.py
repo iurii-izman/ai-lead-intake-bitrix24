@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -11,6 +12,7 @@ class Settings(BaseSettings):
     )
 
     app_name: str = "AI Lead Intake for Bitrix24"
+    app_base_url: str = "http://localhost:8000"
     environment: str = "development"
     debug: bool = False
     database_url: str = "sqlite+pysqlite:///./ai_lead_intake.sqlite3"
@@ -31,10 +33,51 @@ class Settings(BaseSettings):
     admin_password: str = "change-me"
     intake_rate_limit_max_requests: int = 30
     intake_rate_limit_window_seconds: int = 60
+    legacy_rate_limit_intake: str | None = Field(
+        default=None,
+        validation_alias="RATE_LIMIT_INTAKE",
+    )
     worker_autostart: bool = False
     worker_poll_interval_seconds: float = 2.0
     worker_batch_size: int = 5
     worker_max_retry_attempts: int = 3
+
+    @model_validator(mode="after")
+    def apply_legacy_rate_limit(self) -> "Settings":
+        if not self.legacy_rate_limit_intake:
+            return self
+
+        max_requests, window_seconds = _parse_rate_limit(self.legacy_rate_limit_intake)
+        self.intake_rate_limit_max_requests = max_requests
+        self.intake_rate_limit_window_seconds = window_seconds
+        return self
+
+
+def _parse_rate_limit(value: str) -> tuple[int, int]:
+    normalized = value.strip().lower()
+    amount, _, window = normalized.partition("/")
+    if not amount or not window:
+        raise ValueError(
+            "RATE_LIMIT_INTAKE must use the format '<count>/<window>', for example '10/minute'."
+        )
+
+    max_requests = int(amount)
+    mapping = {
+        "second": 1,
+        "seconds": 1,
+        "minute": 60,
+        "minutes": 60,
+        "hour": 3600,
+        "hours": 3600,
+    }
+    try:
+        window_seconds = mapping[window]
+    except KeyError as exc:
+        raise ValueError(
+            "RATE_LIMIT_INTAKE window must be one of: second, minute, hour."
+        ) from exc
+
+    return max_requests, window_seconds
 
 
 @lru_cache(maxsize=1)

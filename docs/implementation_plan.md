@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Current repository state: the codebase now contains an implemented baseline through EPIC 09, while EPIC 10 remains the main open packaging track. This plan remains the staged roadmap, but future work should use it in audit-and-gap-closure mode rather than assuming each epic still needs greenfield implementation.
+Current repository state: the codebase now contains an implemented baseline through EPIC 10. This plan remains the staged roadmap, but future work should use it in audit-and-gap-closure mode rather than assuming each epic still needs greenfield implementation.
 
 ## EPIC 00 — Project Foundation
 - Goal: establish the documentation, governance, and delivery structure.
