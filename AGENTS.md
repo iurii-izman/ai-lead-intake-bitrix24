@@ -7,9 +7,9 @@ Act as a senior coding agent, backend engineer, solution architect, and technica
 The single source of truth is `docs/ai_lead_intake_bitrix24_tz_v1_0.md`.
 
 ## Project scope
-- This repository is being prepared in staged epics.
-- EPIC 00 is documentation and governance only.
-- Runtime application code is added later, one epic at a time.
+- This repository started as staged epic work and now contains an implemented baseline through EPIC 11.
+- Future work should default to audit-and-gap-closure mode unless a new epic explicitly adds scope.
+- Do not recreate already implemented layers from scratch.
 
 ## Forbidden actions
 - Do not create a new TЗ version.
@@ -22,6 +22,7 @@ The single source of truth is `docs/ai_lead_intake_bitrix24_tz_v1_0.md`.
 - Keep route handlers thin.
 - Keep business logic in services and integrations.
 - Prefer explicit, testable boundaries.
+- Treat the current worktree as authoritative over older staged assumptions.
 
 ## Security rules
 - Never commit secrets.
@@ -45,17 +46,19 @@ The single source of truth is `docs/ai_lead_intake_bitrix24_tz_v1_0.md`.
 - `docs/implementation_plan.md`
 - the relevant epic file
 - the relevant Cursor prompt
+- If the relevant epic is already complete in `docs/project_status.md`, work in audit/refinement mode by default.
 
 ## Existing Bitrix24 adapter rule
-- The Bitrix24 adapter boundary was partially implemented early.
+- The Bitrix24 adapter boundary already exists.
 - Do not recreate it from scratch.
-- During EPIC 06, audit existing files and integrate them with the state machine, routing decisions, `bitrix_entities`, and worker pipeline.
+- Changes to Bitrix24 behavior should preserve the existing client/service seams.
 
 ## Delivery rules
 - Prefer `feature/<epic-name>` branches for epic work.
 - Finish each epic with a committed, pushed branch and a draft PR unless the user explicitly asks to merge directly.
 - Leave the working tree clean at the end of each epic.
 - Do not push epic work directly to `main` unless the user explicitly asks for that exception.
+- For direct-main exceptions, still keep commits small, intentional, and verifiable.
 
 ## Uncertainty handling
 - If the work would require scope expansion, stop and record the need in an ADR or in the notes.

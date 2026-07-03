@@ -26,6 +26,7 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - One epic per branch.
 - Review scope before merge.
 - Run tests before merge.
+- Keep CI green before merge when the workflow is active.
 - Check docs and checklists before merge.
 - Finish with a clean working tree before handing off.
 
@@ -40,3 +41,8 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - Confirm README disclaimer is present.
 - Confirm demo data is synthetic.
 - Use [docs/release_note.md](./release_note.md) as the canonical public-safe release text.
+
+## GitHub automation
+- CI runs `ruff check .` and `pytest -q`.
+- Use issue templates for verified bugs or audit tasks.
+- Use the PR template to keep review scope explicit.

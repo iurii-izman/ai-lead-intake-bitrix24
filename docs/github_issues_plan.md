@@ -325,3 +325,34 @@ Prepare the repository for GitHub, Notion, and hiring/portfolio review.
 
 ## Labels suggestion
 `epic`, `docs`, `portfolio`, `packaging`
+
+---
+
+## [EPIC 11] Demo Walkthrough & Visual Presentation
+
+## Goal
+Prepare a repeatable live demo path and screenshot-ready presentation layer for the validated baseline.
+
+## Source of truth
+`docs/ai_lead_intake_bitrix24_tz_v1_0.md`
+
+## Scope
+- Demo walkthrough.
+- Demo script.
+- Screenshot capture checklist.
+- Public-facing packaging alignment for live demo usage.
+
+## Non-goals
+- No new runtime product features.
+- No architecture rewrite.
+
+## Acceptance criteria
+- Another reviewer can run and present the demo with minimal guesswork.
+- Screenshot instructions are consistent with the actual UI and masking rules.
+- Public-facing demo docs stay honest and public-safe.
+
+## Cursor prompt
+`docs/prompts/11_demo_walkthrough_cursor_prompt.md`
+
+## Labels suggestion
+`epic`, `docs`, `demo`, `portfolio`, `presentation`
