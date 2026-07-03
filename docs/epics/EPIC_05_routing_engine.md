@@ -35,5 +35,18 @@ Translate AI output into deterministic routing decisions.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete in the current repository baseline.
+
+Implemented:
+- YAML routing config loading;
+- top-down deterministic evaluation;
+- fallback rule behavior;
+- review and drop paths;
+- routing tests for critical rules and fallback.
+
+If this epic is revisited, audit and refine the existing routing engine instead of recreating it.
+
 ## Cursor prompt location
 `docs/prompts/05_routing_engine_cursor_prompt.md`

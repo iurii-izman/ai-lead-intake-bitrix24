@@ -37,27 +37,19 @@ Synchronize approved routing outcomes into Bitrix24 with isolated integration lo
 
 ## Actual completion status
 
-Status: partially implemented early.
+Status: complete in the current repository baseline.
 
-Important:
-This epic was started before EPIC 02–05. Do not expand or recreate the adapter until:
-- Database + State Machine exist.
-- Intake API exists.
-- AI Classifier exists.
-- Routing Engine exists.
-
-Known early implementation direction:
+Implemented and integrated:
 - Mock and real Bitrix24 modes.
 - Universal CRM mode via `crm.item.add`.
 - Legacy CRM mode via `crm.lead.add`.
 - Task creation via `tasks.task.add`.
 - Field mapping through `config/field_mapping.yaml`.
-- Adapter boundary isolated from business logic.
+- Retry-aware error handling and persistence into `bitrix_entities`.
+- Processing logs and worker/admin integration paths.
+- Tests without real network calls.
 
-Next action:
-During EPIC 06 integration pass, audit the existing adapter and connect it to the state machine, routing decisions, `bitrix_entities`, and worker pipeline.
-
-Do not recreate the adapter from scratch.
+If this epic is revisited, audit and refine the existing adapter instead of recreating it.
 
 ## Cursor prompt location
 `docs/prompts/06_bitrix24_adapter_cursor_prompt.md`

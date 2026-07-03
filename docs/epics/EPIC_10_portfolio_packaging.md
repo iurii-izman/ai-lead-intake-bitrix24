@@ -34,5 +34,21 @@ Prepare the project for portfolio review and safe publication.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: partial.
+
+Already present:
+- README draft;
+- architecture and notion-case docs;
+- screenshots plan;
+- release note artifact;
+- publication-oriented checklists.
+
+Remaining focus:
+- reconcile all public docs with the actual implemented baseline;
+- add any missing demo/publication-safe assets that are explicitly part of EPIC 10;
+- verify the repo is presentation-ready without overstating production readiness.
+
 ## Cursor prompt location
 `docs/prompts/10_portfolio_packaging_cursor_prompt.md`

@@ -36,5 +36,17 @@ Define persistence, queue records, and explicit request lifecycle states.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete in the current repository baseline.
+
+Implemented:
+- SQLAlchemy models for the core tables.
+- request status enum and centralized lifecycle transitions.
+- DB initialization path for the demo MVP.
+- model/schema/state-machine tests.
+
+If this epic is revisited, audit and refine the existing persistence layer instead of recreating it.
+
 ## Cursor prompt location
 `docs/prompts/02_database_cursor_prompt.md`

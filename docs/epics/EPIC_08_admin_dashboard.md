@@ -36,5 +36,19 @@ Provide a safe, masked operational UI for review and monitoring.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete in the current repository baseline.
+
+Implemented:
+- Basic Auth admin routes;
+- dashboard, request list, review queue, and detail views;
+- masked request detail presentation;
+- approve/retry/drop/reprocess actions;
+- settings snapshot page;
+- admin tests for auth, masking, and approval path behavior.
+
+If this epic is revisited, audit and refine the existing admin UI instead of recreating it.
+
 ## Cursor prompt location
 `docs/prompts/08_admin_dashboard_cursor_prompt.md`

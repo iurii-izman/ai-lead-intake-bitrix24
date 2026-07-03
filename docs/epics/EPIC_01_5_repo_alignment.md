@@ -2,13 +2,13 @@
 
 ## Goal
 
-Align the repository after the initial foundation and skeleton work, correct project status, update prompts, and prepare the project for EPIC 02.
+Align the repository state, project status, prompts, and public-facing docs with the actual implementation baseline.
 
 ## Why this epic exists
 
-EPIC 00 and EPIC 01 are effectively complete, but the repository status and prompts need correction.
+The repository moved ahead of the original staged baseline, but status docs and prompts lagged behind the code.
 
-Also, Bitrix24 adapter work was partially implemented early. This must be recorded so future work integrates it instead of rewriting it.
+This epic exists to prevent future agents from following outdated greenfield prompts against an already implemented codebase.
 
 ## Source of truth
 
@@ -17,26 +17,15 @@ Also, Bitrix24 adapter work was partially implemented early. This must be record
 ## Scope
 
 - Update README project status.
-- Create/update `docs/project_status.md`.
-- Update EPIC 01 actual completion status.
-- Update EPIC 06 actual completion status.
-- Update prompts EPIC 02–07 with correct constraints.
-- Add GitHub issues planning document.
-- Add delivery baseline files if still missing:
-  - `.env.example`
-  - `Dockerfile`
-  - `docker-compose.yml`
-- Add a minimal config test if appropriate:
-  - `tests/test_config.py`
+- Create or update `docs/project_status.md`.
+- Update actual completion status across implemented epics.
+- Update prompts so they default to audit-and-gap-closure mode instead of recreate-from-scratch mode.
+- Reconcile the implementation plan with the real repository baseline.
+- Keep guidance explicit about preserving existing Bitrix24, AI, routing, worker, and admin boundaries.
 
 ## Out of scope
 
-- No database models.
-- No intake API.
-- No AI classifier.
-- No routing engine.
-- No worker pipeline.
-- No dashboard.
+- No new functional feature work beyond documentation alignment and verified hygiene fixes.
 - No new Bitrix24 adapter work.
 - No new TЗ version.
 
@@ -44,17 +33,25 @@ Also, Bitrix24 adapter work was partially implemented early. This must be record
 
 - README reflects the correct current stage.
 - `docs/project_status.md` exists and is accurate.
-- EPIC 01 is marked complete.
-- EPIC 06 is marked partial early implementation / integration pending.
-- Prompts EPIC 02–07 prevent accidental rework and scope creep.
-- Missing delivery baseline files are added if absent.
+- Implemented epics are marked according to the current repository baseline.
+- Prompts prevent accidental rework and scope creep.
 - No secrets or real PII are added.
-- No functional application features are introduced.
-- Repository is ready for EPIC 02.
+- No unrelated functional application features are introduced.
+- Repository guidance is safe for subsequent epic work.
 
 ## Definition of Done
 
 - All alignment documents are updated.
 - Future Cursor agents can clearly see the current state.
-- EPIC 02 can be started without ambiguity.
-- Existing Bitrix24 adapter is protected from accidental rewrite.
+- Subsequent epic work can continue without ambiguity.
+- Existing implementation layers are protected from accidental rewrite.
+
+## Actual completion status
+
+Status: complete.
+
+Delivered by this alignment pass:
+- repository status synchronized with the actual implemented baseline;
+- prompts rewritten toward audit-first execution for implemented epics;
+- README and implementation plan reconciled with the current codebase;
+- epic files updated with actual completion notes where applicable.

@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Current repository state: EPIC 00 and EPIC 01 are complete. EPIC 01.5 is the active corrective alignment pass before EPIC 02 begins. This plan is the staged delivery roadmap and approved sequence for future work.
+Current repository state: the codebase now contains an implemented baseline through EPIC 09, while EPIC 10 remains the main open packaging track. This plan remains the staged roadmap, but future work should use it in audit-and-gap-closure mode rather than assuming each epic still needs greenfield implementation.
 
 ## EPIC 00 — Project Foundation
 - Goal: establish the documentation, governance, and delivery structure.

@@ -3,12 +3,14 @@
 ## Context
 The core app exists; now harden behavior with tests and security checks.
 Inspect the current repository state first and keep the test changes aligned with the codebase.
+This epic is already implemented in the repository baseline.
 
 ## Source of truth
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
 ## Task
-Add unit, integration, and security tests for the critical flows.
+Audit the existing test and security baseline.
+Add or adjust tests only for verified gaps, regressions, or missing hardening checks.
 
 ## Files to create/change
 - `tests/*`
@@ -29,6 +31,7 @@ Add unit, integration, and security tests for the critical flows.
 - Tests cover the critical flows and edge cases.
 - No real network calls are used.
 - Security behavior is covered by explicit assertions.
+- The suite remains deterministic and locally green.
 
 ## Final report format
 ## Done

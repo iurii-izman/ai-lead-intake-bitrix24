@@ -2,15 +2,18 @@
 
 ## Critical instruction
 
-Do not modify Bitrix24 adapter.
-Do not implement routing engine.
-Do not implement worker pipeline.
-Do not call Bitrix24.
+Do not recreate the classifier or provider boundary from scratch.
 
-This epic only implements AI provider abstraction and classification persistence.
+This epic is already implemented in the repository baseline.
 
-AI_PROVIDER=mock must work without API keys.
-AI_PROVIDER=openai must be isolated behind provider/client boundary.
+Use this epic to audit and improve:
+- provider abstraction;
+- mock/OpenAI mode behavior;
+- structured-output validation;
+- fallback and review-gate handling;
+- AI-related tests and docs.
+
+Keep Bitrix24, routing, and worker changes out unless a verified boundary bug requires a minimal coordinated fix.
 
 ## Source of truth
 

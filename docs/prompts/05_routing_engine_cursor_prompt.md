@@ -2,11 +2,13 @@
 
 ## Critical instruction
 
-Do not call Bitrix24.
-Do not implement worker pipeline.
-Do not modify Bitrix24 adapter.
+Do not recreate routing from scratch.
 
-This epic only converts AI classification into deterministic routing decisions.
+This epic is already implemented in the repository baseline.
+
+Use this epic to audit and refine deterministic routing decisions, rule loading, fallback paths, and routing tests.
+
+Do not expand into Bitrix24 sync or worker orchestration except for a minimal boundary fix backed by failing tests or a verified bug.
 
 ## Source of truth
 

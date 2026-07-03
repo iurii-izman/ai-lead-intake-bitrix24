@@ -36,5 +36,19 @@ Classify incoming requests into structured outputs suitable for routing.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete in the current repository baseline.
+
+Implemented:
+- `AIClassifier` service;
+- provider abstraction and mock/OpenAI boundary;
+- structured-output validation;
+- fallback classification path;
+- confidence review gate;
+- classifier tests for deterministic mock behavior, low confidence, and invalid output handling.
+
+If this epic is revisited, audit and refine the existing classifier instead of recreating it.
+
 ## Cursor prompt location
 `docs/prompts/04_ai_classifier_cursor_prompt.md`

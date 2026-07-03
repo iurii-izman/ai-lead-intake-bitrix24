@@ -2,13 +2,15 @@
 
 ## Context
 Create the operational admin interface for review and visibility.
-Inspect the current repository state before editing and keep the UI scope narrow.
+Inspect the current repository state before editing.
+This epic is already implemented in the repository baseline.
 
 ## Source of truth
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
 ## Task
-Build the masked admin dashboard with Basic Auth protection.
+Audit and refine the masked admin dashboard with Basic Auth protection.
+Only fill verified gaps in UI behavior, masking, review actions, or admin tests/docs.
 
 ## Files to create/change
 - `app/templates/*` or equivalent Jinja2 templates
@@ -30,6 +32,7 @@ Build the masked admin dashboard with Basic Auth protection.
 - PII is masked in the UI.
 - Review actions are available.
 - The UI stays aligned with the demo-first scope.
+- Existing admin behavior is not rewritten without a concrete bug or acceptance gap.
 
 ## Final report format
 ## Done
@@ -54,4 +57,4 @@ Build the masked admin dashboard with Basic Auth protection.
 - Working tree is clean at the end of the epic.
 
 ## Next step
-- EPIC 09 — Tests + Security
+- EPIC 10 — Portfolio Packaging, unless a verified admin gap remains

@@ -2,40 +2,37 @@
 
 ## Context
 You are working in `C:\dev_bitrix24\ai_lead_intake_bitrix24`.
-Inspect the current repository state before editing and keep the work within the files listed below.
+Inspect the current repository state before editing.
+This epic is already implemented in the repository baseline.
 
 ## Source of truth
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
 ## Task
-Create the minimal application skeleton, settings layer, and healthcheck endpoint only.
+Audit the existing skeleton, settings layer, and healthcheck endpoint.
+Only fix concrete gaps, regressions, or missing tests/docs.
 
 ## Files to create/change
 - `app/main.py`
 - `app/config.py`
 - `app/api/health.py`
-- `app/__init__.py` if needed
-- `app/api/__init__.py` if needed
-- `tests/__init__.py` if needed
-- Any minimal support files required for imports and tests
+- related tests
+- minimal supporting files only if a verified gap requires them
 
 ## Implementation constraints
-- Keep the app thin and importable.
-- Prefer a single FastAPI application object and a single health route.
-- Do not add database, AI, Bitrix24, or worker logic.
-- Do not modify docs, ADRs, or prompts.
+- Do not recreate the skeleton from scratch.
+- Preserve the existing application factory shape unless a concrete bug requires change.
+- Do not expand into intake, AI, Bitrix24, routing, worker, or dashboard work.
 
 ## Non-goals
-- No database models.
-- No intake API.
-- No AI classifier.
-- No Bitrix24 adapter.
+- No new architecture.
+- No feature expansion outside skeleton/config/health.
 
 ## Acceptance criteria
-- The app starts.
+- Existing skeleton behavior is verified or corrected.
 - `/health` returns a healthy response.
 - Config values load from environment cleanly.
-- The implementation is limited to the skeleton scope.
+- No already-implemented later-epic behavior is rewritten under this epic.
 
 ## Final report format
 ## Done
@@ -60,4 +57,4 @@ Create the minimal application skeleton, settings layer, and healthcheck endpoin
 - Working tree is clean at the end of the epic.
 
 ## Next step
-- EPIC 02 — Database + State Machine
+- EPIC 10 — Portfolio Packaging, or another epic only if a verified gap is found

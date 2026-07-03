@@ -40,5 +40,20 @@ Expose a safe intake endpoint that stores requests exactly once.
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete in the current repository baseline.
+
+Implemented:
+- protected intake endpoint;
+- payload validation;
+- duplicate idempotency handling;
+- masked intake persistence;
+- `intake_received` processing log;
+- intake rate limiting;
+- intake tests for valid, duplicate, invalid secret, invalid payload, blank message, and rate-limit scenarios.
+
+If this epic is revisited, audit and refine the existing intake path instead of recreating it.
+
 ## Cursor prompt location
 `docs/prompts/03_intake_api_cursor_prompt.md`

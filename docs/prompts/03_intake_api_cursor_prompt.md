@@ -2,14 +2,19 @@
 
 ## Critical instruction
 
-Do not call AI.
-Do not call Bitrix24.
-Do not implement routing.
-Do not implement worker pipeline.
+Do not recreate the intake endpoint from scratch.
 
-This epic only accepts and stores incoming requests.
+This epic is already implemented in the repository baseline.
 
-Existing Bitrix24 adapter must remain untouched.
+Use this prompt only to audit or refine:
+- `POST /api/v1/intake`;
+- webhook-secret protection;
+- idempotency behavior;
+- intake logging;
+- intake rate limiting;
+- intake-focused tests and docs.
+
+Do not mix in AI, Bitrix24 sync, routing, or worker orchestration changes unless a verified bug crosses the boundary.
 
 ## Source of truth
 
@@ -22,3 +27,4 @@ Existing Bitrix24 adapter must remain untouched.
 - invalid secret → 401;
 - invalid payload → 422;
 - processing log `intake_received` created.
+- rate limit rejects excess requests with `429`.

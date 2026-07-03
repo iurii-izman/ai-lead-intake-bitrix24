@@ -4,10 +4,14 @@
 
 Use existing service boundaries.
 
+This epic is already implemented in the repository baseline.
+
 Do not rewrite:
 - AI classifier;
 - routing engine;
 - Bitrix24 adapter.
+
+Use this prompt to audit and refine the existing orchestration.
 
 The worker should orchestrate existing services:
 intake request → AI classification → confidence gate → routing → Bitrix sync → completed/review/dropped/failed.

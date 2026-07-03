@@ -10,12 +10,12 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 Current stage:
 - EPIC 00 — complete
 - EPIC 01 — complete
-- EPIC 01.5 — current: repository alignment and delivery baseline
-- EPIC 02 — next functional epic: Database + State Machine
-- EPIC 06 — Bitrix24 adapter boundary was partially implemented early and must be integrated after EPIC 02–05
+- EPIC 01.5 — complete: repository alignment baseline established and resynchronized with actual code
+- EPIC 02–09 — implemented in repository baseline and passing current local checks
+- EPIC 10 — current focus: portfolio packaging and publication hardening
 
 Approved status is tracked in `docs/project_status.md`.
-The repository contains exploratory code beyond the approved epic sequence; future work should follow the documented epic order instead of assuming every existing file is final.
+Future work should audit and refine the existing implementation instead of recreating already implemented layers from scratch.
 
 ## What it is
 
@@ -35,17 +35,17 @@ Demo-first delivery with production-capable seams. The first working release is 
 - [Technical specification](./docs/ai_lead_intake_bitrix24_tz_v1_0.md)
 - [Project status](./docs/project_status.md)
 - [Implementation plan](./docs/implementation_plan.md)
-- [EPIC 02 prompt](./docs/prompts/02_database_cursor_prompt.md)
+- [EPIC 10 prompt](./docs/prompts/10_portfolio_packaging_cursor_prompt.md)
 - [Epics](./docs/epics/)
 - [Prompts](./docs/prompts/)
 
 ## Next step
 
-Close EPIC 01.5, then start EPIC 02 — Database + State Machine.
+Finish EPIC 10 — Portfolio Packaging and publication hygiene.
 
 ## Delivery note
 
-Production-capable architecture, demo-first delivery. Do not treat the repository as an end-to-end production-ready system yet.
+Production-capable architecture, demo-first delivery. Treat the repository as an implemented prototype that still needs packaging, audit discipline, and public-release hygiene.
 
 ## Disclaimer
 

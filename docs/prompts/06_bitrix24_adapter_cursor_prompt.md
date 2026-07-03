@@ -4,6 +4,8 @@
 
 Do not recreate the Bitrix24 adapter from scratch.
 
+This epic is already implemented in the repository baseline and should now be treated as an audit/refinement epic.
+
 Before changing anything:
 1. Find existing Bitrix24 adapter/service files.
 2. Find existing Bitrix24 tests.
@@ -29,7 +31,7 @@ This epic should integrate the adapter with:
 - state machine;
 - worker pipeline later if EPIC 07 is not yet complete.
 
-If the adapter is already complete, only add missing tests/docs and do not rewrite.
+If the adapter already satisfies the epic, only close missing tests/docs/gaps and do not rewrite it.
 
 ## Source of truth
 

@@ -2,19 +2,17 @@
 
 ## Critical instruction
 
-Do not modify Bitrix24 adapter files in this epic.
+Do not recreate the persistence layer from scratch.
 
-Do not implement intake API, AI classifier, routing engine, worker, or dashboard.
+This epic is already implemented in the repository baseline.
 
-This epic is only for:
-- database models;
-- state enum;
-- status transitions;
-- processing logs;
-- Pydantic schemas;
-- tests for models and state machine.
+Use this prompt only to:
+- audit database models and schema boundaries;
+- verify state enum and transition logic;
+- close concrete gaps in models, state machine, or DB tests;
+- align docs if the persistence contract changes.
 
-Existing early Bitrix24 work must remain untouched.
+Do not use this epic to rewrite intake, AI, routing, Bitrix24, worker, or dashboard logic.
 
 ## Source of truth
 
@@ -46,7 +44,8 @@ duplicate
 
 ## Acceptance criteria
 
-- tables can be created;
-- state transitions are explicit/testable;
+- table creation still works;
+- state transitions remain explicit and testable;
+- persistence changes stay backward-compatible with the current codebase unless an ADR says otherwise;
 - no external network calls;
-- tests pass.
+- relevant tests pass.
