@@ -20,6 +20,7 @@
 | EPIC 08 — Admin Dashboard | Complete | Basic Auth admin UI, request detail, review actions, settings snapshot, and masking are implemented and tested. |
 | EPIC 09 — Tests + Security | Complete | Test suite and security hygiene checks are present; current local baseline is green under `pytest` and `ruff`. |
 | EPIC 10 — Portfolio Packaging | Complete | README, public-safe docs, release assets, synthetic demo data, and seed helper are present and verified. |
+| EPIC 11 — Demo Walkthrough & Visual Presentation | Planned | Next recommended presentation-layer epic after the validated implementation and packaging baseline. |
 
 ## Verified baseline
 
@@ -50,4 +51,8 @@ The Bitrix24 adapter boundary already exists and must only be refined or extende
 
 ## Next recommended work
 
-Post-MVP maintenance, presentation polish, or targeted hardening based on verified gaps.
+EPIC 11 — Demo Walkthrough & Visual Presentation.
+
+Prompt:
+
+`docs/prompts/11_demo_walkthrough_cursor_prompt.md`

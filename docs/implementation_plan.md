@@ -85,3 +85,10 @@ Current repository state: the codebase now contains an implemented baseline thro
 - Key files: README, packaging docs, public-safe demo assets.
 - Acceptance criteria: the repo can be reviewed safely without secrets or PII.
 - Non-goals: production rollout tasks.
+
+## EPIC 11 — Demo Walkthrough & Visual Presentation
+- Goal: make the implemented baseline easier to present live and asynchronously.
+- Expected output: repeatable demo walkthrough, presentation script, screenshot capture checklist.
+- Key files: `docs/demo_walkthrough.md`, `docs/demo_script.md`, `docs/screenshots_capture_checklist.md`.
+- Acceptance criteria: another reviewer can run and present the demo without hidden steps.
+- Non-goals: new runtime features or architectural expansion.

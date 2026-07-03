@@ -218,6 +218,12 @@ The goal is to evolve the same boundaries, not to replace the whole system.
 - Expand publication assets and walkthrough materials
 - Strengthen deployment and operations profile for internal-production evolution
 
+## Next Epic
+
+Recommended next post-MVP epic:
+- [EPIC 11 — Demo Walkthrough & Visual Presentation](./docs/epics/EPIC_11_demo_walkthrough.md)
+- [Prompt](./docs/prompts/11_demo_walkthrough_cursor_prompt.md)
+
 ## Disclaimer
 
 This is a demo/product prototype. It is not a commercial deployment.
