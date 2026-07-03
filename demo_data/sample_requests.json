@@ -1,0 +1,92 @@
+[
+  {
+    "idempotency_key": "site-form-20260703-0001",
+    "source": "web_form",
+    "name": "Ivan Petrov",
+    "email": "ivan.petrov.synthetic@example.com",
+    "phone": "+37360000001",
+    "company": "Romashka Demo SRL",
+    "message": "Здравствуйте. Хотим внедрить Bitrix24 CRM для отдела продаж и настроить воронку."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0002",
+    "source": "web_form",
+    "name": "Anna Ceban",
+    "email": "anna.ceban.synthetic@example.com",
+    "phone": "+37360000002",
+    "company": "Solar Demo Grup",
+    "message": "Нужна интеграция Битрикс24 и 1С, интересует оценка сроков и стоимости."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0003",
+    "source": "api_partner",
+    "name": "Mihai Rusu",
+    "email": "mihai.rusu.synthetic@example.com",
+    "phone": "+37360000003",
+    "company": "Workflow Studio",
+    "message": "Нужно автоматизировать согласование заявок и внутренние бизнес-процессы."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0004",
+    "source": "web_form",
+    "name": "Elena Popa",
+    "email": "elena.popa.synthetic@example.com",
+    "phone": "+37360000004",
+    "company": "Northwind Demo",
+    "message": "Ищем AI автоматизацию для первичной обработки лидов и ответов клиентам."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0005",
+    "source": "landing_page",
+    "name": "Sergiu Luca",
+    "email": "sergiu.luca.synthetic@example.com",
+    "phone": "+37360000005",
+    "company": "Retail Pilot",
+    "message": "Нужна консультация по запуску Битрикс24 для небольшой компании."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0006",
+    "source": "web_form",
+    "name": "Olga Melnic",
+    "email": "olga.melnic.synthetic@example.com",
+    "phone": "+37360000006",
+    "company": "Support Demo",
+    "message": "У нас проблема с текущей настройкой CRM, нужна поддержка и аудит."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0007",
+    "source": "partner_referral",
+    "name": "Victor Sava",
+    "email": "victor.sava.synthetic@example.com",
+    "phone": "+37360000007",
+    "company": "Alliance Demo",
+    "message": "Интересует партнерство по внедрению Bitrix24 и совместные проекты."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0008",
+    "source": "web_form",
+    "name": "Tatiana Cojocaru",
+    "email": "tatiana.cojocaru.synthetic@example.com",
+    "phone": "+37360000008",
+    "company": "Service QA Lab",
+    "message": "Срочно. Есть жалоба на обработку прошлой заявки, нужен быстрый ответ менеджера."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0009",
+    "source": "api_demo",
+    "name": "Roman Gutu",
+    "email": "roman.gutu.synthetic@example.com",
+    "phone": "+37360000009",
+    "company": "Pipeline Demo",
+    "message": "Please review our CRM intake process and propose a Bitrix24 implementation plan."
+  },
+  {
+    "idempotency_key": "site-form-20260703-0010",
+    "source": "web_form",
+    "name": "Spam Sender",
+    "email": "spam.synthetic@example.com",
+    "phone": "+37360000010",
+    "company": "Spam Demo",
+    "message": "Buy now casino traffic and unsubscribe promotions immediately."
+  }
+]
