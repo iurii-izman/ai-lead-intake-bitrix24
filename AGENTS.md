@@ -39,6 +39,18 @@ The single source of truth is `docs/ai_lead_intake_bitrix24_tz_v1_0.md`.
 - Record architectural decisions in ADRs.
 - Keep the README disclaimer visible.
 
+## Current project status rule
+- Before starting any epic, read:
+- `docs/project_status.md`
+- `docs/implementation_plan.md`
+- the relevant epic file
+- the relevant Cursor prompt
+
+## Existing Bitrix24 adapter rule
+- The Bitrix24 adapter boundary was partially implemented early.
+- Do not recreate it from scratch.
+- During EPIC 06, audit existing files and integrate them with the state machine, routing decisions, `bitrix_entities`, and worker pipeline.
+
 ## Delivery rules
 - Prefer `feature/<epic-name>` branches for epic work.
 - Finish each epic with a committed, pushed branch and a draft PR unless the user explicitly asks to merge directly.

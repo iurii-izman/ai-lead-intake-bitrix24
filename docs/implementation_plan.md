@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Current repository state: EPIC 00 through EPIC 10 are complete for the current portfolio/demo scope. This plan remains as the staged delivery roadmap and historical record.
+Current repository state: EPIC 00 and EPIC 01 are complete. EPIC 01.5 is the active corrective alignment pass before EPIC 02 begins. This plan is the staged delivery roadmap and approved sequence for future work.
 
 ## EPIC 00 — Project Foundation
 - Goal: establish the documentation, governance, and delivery structure.
@@ -15,6 +15,13 @@ Current repository state: EPIC 00 through EPIC 10 are complete for the current p
 - Key files: `app/main.py`, `app/config.py`, `app/api/health.py`.
 - Acceptance criteria: app starts and returns a healthy status.
 - Non-goals: intake logic, AI, routing, Bitrix sync.
+
+## EPIC 01.5 — Repo Alignment & Delivery Baseline
+- Goal: correct repository status after EPIC 00/01 and early Bitrix24 work.
+- Expected output: updated README, project status, corrected prompts, delivery baseline files.
+- Key files: `README.md`, `docs/project_status.md`, `docs/epics/EPIC_01_5_repo_alignment.md`, `docs/prompts/*`.
+- Acceptance criteria: future work starts from EPIC 02 without ambiguity.
+- Non-goals: functional runtime implementation.
 
 ## EPIC 02 — Database + State Machine
 - Goal: define persistence and the request state machine.
@@ -44,8 +51,8 @@ Current repository state: EPIC 00 through EPIC 10 are complete for the current p
 - Acceptance criteria: repeated inputs produce stable decisions.
 - Non-goals: CRM API logic.
 
-## EPIC 06 — Bitrix24 Adapter
-- Goal: synchronize routed requests into Bitrix24.
+## EPIC 06 — Bitrix24 Adapter Integration Pass
+- Goal: audit and integrate the existing Bitrix24 adapter boundary instead of recreating it.
 - Expected output: mock/real adapter, CRM mode selection, task creation.
 - Key files: adapter client, mapping config, sync service.
 - Acceptance criteria: adapter isolates API differences and handles errors predictably.

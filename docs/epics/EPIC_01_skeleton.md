@@ -39,5 +39,23 @@ Create the minimal runnable application skeleton, configuration layer, and healt
 - Changes are committed, pushed, and handed off via a draft PR unless the user explicitly requests a direct main push.
 - Working tree is clean at handoff.
 
+## Actual completion status
+
+Status: complete.
+
+Implemented:
+- Minimal FastAPI application factory.
+- Settings layer.
+- Healthcheck route.
+- Healthcheck test.
+
+Moved / corrected in EPIC 01.5:
+- README project status update.
+- Project status document.
+- Delivery baseline cleanup, if missing.
+
+Important:
+Do not rerun EPIC 01 from scratch unless the skeleton is broken.
+
 ## Cursor prompt location
 `docs/prompts/01_skeleton_cursor_prompt.md`

@@ -1,57 +1,36 @@
-# Cursor Prompt — EPIC 06 Bitrix24 Adapter
+# Cursor Prompt — EPIC 06 Bitrix24 Adapter Integration Pass
 
-## Context
-Implement the integration boundary that syncs approved outcomes into Bitrix24.
-Inspect the current repository state first and keep the work inside integration boundaries only.
+## Critical instruction
+
+Do not recreate the Bitrix24 adapter from scratch.
+
+Before changing anything:
+1. Find existing Bitrix24 adapter/service files.
+2. Find existing Bitrix24 tests.
+3. Find `config/field_mapping.yaml`.
+4. Audit what is already implemented.
+
+Expected existing or target capabilities:
+- BITRIX_MODE=mock/real.
+- BITRIX_CRM_MODE=universal/legacy.
+- universal mode uses `crm.item.add` with `entityTypeId=1`.
+- legacy mode uses `crm.lead.add`.
+- task creation uses `tasks.task.add`.
+- field mapping is externalized.
+- retry/backoff exists for 429, timeout, 5xx.
+- 400 is not retried.
+- 401/403 are config/auth failures.
+- tests do not make real network calls.
+
+This epic should integrate the adapter with:
+- routing decisions;
+- `bitrix_entities`;
+- processing logs;
+- state machine;
+- worker pipeline later if EPIC 07 is not yet complete.
+
+If the adapter is already complete, only add missing tests/docs and do not rewrite.
 
 ## Source of truth
+
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
-
-## Task
-Create mock/real Bitrix modes, CRM mode selection, and task creation.
-
-## Files to create/change
-- `app/integrations/bitrix24_client.py` or equivalent client
-- `app/services/bitrix_service.py` or equivalent sync service
-- `config/field_mapping.yaml` or equivalent mapping file
-- Tests for mock mode, real-mode contract, and failure handling
-
-## Implementation constraints
-- Support mock and real modes behind one adapter boundary.
-- Keep CRM mode selection explicit.
-- Use mapping config for portal-specific fields.
-- Do not add OAuth, SaaS, or marketplace behavior.
-
-## Non-goals
-- No OAuth marketplace app.
-- No SaaS work.
-
-## Acceptance criteria
-- Adapter isolates integration differences.
-- Errors are handled predictably.
-- Task creation is part of the same isolated adapter boundary.
-
-## Final report format
-## Done
-- ...
-
-## Files changed
-- ...
-
-## Branch / commit / PR
-- Branch:
-- Commit:
-- Push:
-- PR:
-
-## How to verify
-- ...
-
-## Notes / assumptions
-- ...
-
-## Tree state
-- Working tree is clean at the end of the epic.
-
-## Next step
-- EPIC 07 — Worker Pipeline

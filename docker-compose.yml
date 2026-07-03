@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: ai-lead-intake-bitrix24
+    env_file:
+      - .env.example
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./config:/app/config
+      - ./docs:/app/docs

@@ -1,58 +1,52 @@
 # Cursor Prompt — EPIC 02 Database + State Machine
 
-## Context
-Use the existing foundation documents and keep the implementation within EPIC 02 only.
-Inspect the current repository state before editing and preserve unrelated files.
+## Critical instruction
+
+Do not modify Bitrix24 adapter files in this epic.
+
+Do not implement intake API, AI classifier, routing engine, worker, or dashboard.
+
+This epic is only for:
+- database models;
+- state enum;
+- status transitions;
+- processing logs;
+- Pydantic schemas;
+- tests for models and state machine.
+
+Existing early Bitrix24 work must remain untouched.
 
 ## Source of truth
+
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
-## Task
-Define persistence and the request lifecycle state machine for the MVP.
+## Expected models
 
-## Files to create/change
-- `app/models/*`
-- `app/schemas/*`
-- `app/db/*` or equivalent persistence layer
-- Tests for models, enums, and state transitions
-- Minimal documentation updates only if needed for the implemented schema
+- `intake_requests`
+- `ai_classifications`
+- `routing_decisions`
+- `bitrix_entities`
+- `processing_logs`
 
-## Implementation constraints
-- Use the states from the TЗ and keep them explicit in code.
-- Keep the schema portable and straightforward to migrate later.
-- Do not introduce external integrations.
-- Do not touch admin UI, AI provider logic, or Bitrix adapter code.
+## Statuses
 
-## Non-goals
-- No external integrations.
-- No dashboard work.
+```text
+received
+processing
+classified
+review_needed
+routed
+bitrix_syncing
+completed
+failed
+failed_retryable
+dropped
+duplicate
+```
 
 ## Acceptance criteria
-- States are explicit and testable.
-- Queue records persist correctly.
-- State transitions are documented or encoded clearly enough to test.
 
-## Final report format
-## Done
-- ...
-
-## Files changed
-- ...
-
-## Branch / commit / PR
-- Branch:
-- Commit:
-- Push:
-- PR:
-
-## How to verify
-- ...
-
-## Notes / assumptions
-- ...
-
-## Tree state
-- Working tree is clean at the end of the epic.
-
-## Next step
-- EPIC 03 — Intake API + Security + Idempotency
+- tables can be created;
+- state transitions are explicit/testable;
+- no external network calls;
+- tests pass.

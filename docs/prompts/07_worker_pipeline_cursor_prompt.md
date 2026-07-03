@@ -1,56 +1,27 @@
 # Cursor Prompt — EPIC 07 Worker Pipeline
 
-## Context
-The queue, classifier, routing, and adapter are ready to be orchestrated together.
-Inspect the current repository state first and avoid touching unrelated files.
+## Critical instruction
+
+Use existing service boundaries.
+
+Do not rewrite:
+- AI classifier;
+- routing engine;
+- Bitrix24 adapter.
+
+The worker should orchestrate existing services:
+intake request → AI classification → confidence gate → routing → Bitrix sync → completed/review/dropped/failed.
 
 ## Source of truth
+
 `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 
-## Task
-Implement the in-process worker and full processing pipeline.
-
-## Files to create/change
-- `app/services/worker.py` or equivalent orchestrator
-- Pipeline/service glue code
-- Retry handling and status transition code
-- Tests for happy path, review path, drop path, and retryable failure path
-
-## Implementation constraints
-- Process queue items in a clear, bounded loop.
-- Keep the worker in-process for the MVP.
-- Preserve traceable status transitions and timeline events.
-- Do not add external queue infrastructure.
-
-## Non-goals
-- No external queue infrastructure.
-
 ## Acceptance criteria
-- Items move through the pipeline correctly.
-- Review, dropped, and failed paths are explicit.
-- Retry behavior is bounded and testable.
 
-## Final report format
-## Done
-- ...
-
-## Files changed
-- ...
-
-## Branch / commit / PR
-- Branch:
-- Commit:
-- Push:
-- PR:
-
-## How to verify
-- ...
-
-## Notes / assumptions
-- ...
-
-## Tree state
-- Working tree is clean at the end of the epic.
-
-## Next step
-- EPIC 08 — Admin Dashboard
+- processes `received` and `failed_retryable`;
+- respects retry count;
+- low confidence → review;
+- spam/drop → dropped;
+- temporary Bitrix errors → failed_retryable;
+- retry exceeded → failed;
+- logs every step.
