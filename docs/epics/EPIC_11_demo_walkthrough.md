@@ -45,7 +45,7 @@ Prepare a polished, repeatable demo and presentation layer for GitHub, Notion, H
 - Working tree is clean at handoff.
 
 ## Status
-Planned post-MVP extension.
+Complete.
 
 ## Cursor prompt location
 `docs/prompts/11_demo_walkthrough_cursor_prompt.md`

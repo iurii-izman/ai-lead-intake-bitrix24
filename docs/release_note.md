@@ -12,6 +12,7 @@ This release finalizes the public-facing packaging for the project. The reposito
 - Updated the README so the public-facing description matches the implemented baseline.
 - Added public-safe Notion case structure and screenshot plan.
 - Added synthetic demo requests and a local seed script for repeatable demos.
+- Added a repeatable demo walkthrough, live demo script, and screenshot capture checklist.
 - Tightened release and publication checklists.
 - Kept the scope aligned with the staged epic plan and the source of truth.
 
@@ -32,6 +33,9 @@ AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for C
 - README: `README.md`
 - Notion case structure: `docs/notion_case.md`
 - Screenshot plan: `docs/screenshots_plan.md`
+- Demo walkthrough: `docs/demo_walkthrough.md`
+- Demo script: `docs/demo_script.md`
+- Screenshot capture checklist: `docs/screenshots_capture_checklist.md`
 - Portfolio publication checklist: `docs/checklists/portfolio_publication_checklist.md`
 - Demo requests: `demo_data/sample_requests.json`
 - Seed helper: `scripts/seed_demo_data.py`

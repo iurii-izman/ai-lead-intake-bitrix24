@@ -187,6 +187,9 @@ Tests do not rely on real external network calls and use mock boundaries for AI 
 Public-safe packaging artifacts:
 - [Notion case structure](./docs/notion_case.md)
 - [Screenshot plan](./docs/screenshots_plan.md)
+- [Demo walkthrough](./docs/demo_walkthrough.md)
+- [Demo script](./docs/demo_script.md)
+- [Screenshots capture checklist](./docs/screenshots_capture_checklist.md)
 - [Release note](./docs/release_note.md)
 - [Portfolio publication checklist](./docs/checklists/portfolio_publication_checklist.md)
 
