@@ -1,6 +1,6 @@
 """Bitrix24 entity sync results for an intake request."""
 
-from sqlalchemy import ForeignKey, Integer, String, Text
+from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, new_uuid, utc_now_iso
@@ -17,7 +17,7 @@ class BitrixEntityRecord(Base):
         index=True,
     )
     entity_type: Mapped[str] = mapped_column(String(50), nullable=False)
-    bitrix_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    bitrix_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     bitrix_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
     status: Mapped[str] = mapped_column(String(50), nullable=False)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)

@@ -47,3 +47,12 @@ def test_terminal_states_are_explicit():
     assert REQUEST_LIFECYCLE_STATE_MACHINE.is_terminal(RequestStatus.failed)
     assert REQUEST_LIFECYCLE_STATE_MACHINE.is_terminal(RequestStatus.dropped)
     assert REQUEST_LIFECYCLE_STATE_MACHINE.is_terminal(RequestStatus.duplicate)
+
+
+def test_transition_map_is_explicit_for_every_status():
+    assert set(REQUEST_LIFECYCLE_STATE_MACHINE.transitions) == {None, *RequestStatus}
+
+
+def test_terminal_states_have_no_outgoing_transitions():
+    for status in REQUEST_LIFECYCLE_STATE_MACHINE.terminal_states:
+        assert REQUEST_LIFECYCLE_STATE_MACHINE.allowed_transitions(status) == frozenset()

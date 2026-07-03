@@ -55,7 +55,13 @@ class RequestLifecycleStateMachine:
         from_status: RequestStatus | None,
         to_status: RequestStatus,
     ) -> bool:
-        return to_status in self.transitions.get(from_status, frozenset())
+        return to_status in self.allowed_transitions(from_status)
+
+    def allowed_transitions(
+        self,
+        from_status: RequestStatus | None,
+    ) -> frozenset[RequestStatus]:
+        return self.transitions.get(from_status, frozenset())
 
     def validate_transition(
         self,

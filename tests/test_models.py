@@ -51,3 +51,13 @@ def test_model_tables_are_exposed():
     assert RoutingDecisionRecord.__tablename__ == "routing_decisions"
     assert BitrixEntityRecord.__tablename__ == "bitrix_entities"
     assert ProcessingLogRecord.__tablename__ == "processing_logs"
+
+
+def test_bitrix_entity_schema_matches_source_of_truth():
+    engine = create_engine("sqlite+pysqlite:///:memory:")
+    create_all(engine)
+
+    inspector = inspect(engine)
+    columns = {column["name"]: column for column in inspector.get_columns("bitrix_entities")}
+
+    assert columns["bitrix_id"]["type"].python_type is str
