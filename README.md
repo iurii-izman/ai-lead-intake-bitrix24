@@ -20,6 +20,11 @@ Validated local baseline:
 
 Approved repository state is tracked in `docs/project_status.md`.
 
+Additional validated runtime baseline as of July 4, 2026:
+- real Bitrix24 portal verified with `AI_PROVIDER=mock`
+- working CRM mode confirmed as `BITRIX_CRM_MODE=legacy`
+- happy path, `review_needed`, and admin manual actions were exercised in the running app
+
 ## What it is
 
 AI Lead Intake for Bitrix24 is a production-capable demo-first backend prototype for:
@@ -195,6 +200,7 @@ Public-safe packaging artifacts:
 - [Screenshots capture checklist](./docs/screenshots_capture_checklist.md)
 - [Release note](./docs/release_note.md)
 - [Portfolio publication checklist](./docs/checklists/portfolio_publication_checklist.md)
+- [Bitrix24 trial validation runbook](./docs/bitrix24_trial_runbook.md)
 
 ## Documentation
 
@@ -221,10 +227,17 @@ The goal is to evolve the same boundaries, not to replace the whole system.
 
 ## Current Follow-up
 
-Recommended next validation path:
-- run the mock baseline locally;
-- validate the real Bitrix24 boundary with `AI_PROVIDER=mock`;
-- capture any portal-specific mapping deltas before attempting broader hardening.
+Current validated integration baseline:
+- `AI_PROVIDER=mock`
+- `BITRIX_MODE=real`
+- `BITRIX_CRM_MODE=legacy`
+- real Bitrix24 happy-path sync confirmed
+- `review_needed` path confirmed
+- admin `approve`, `reprocess-ai`, `retry`, and `drop` confirmed
+
+Next most useful validation path:
+- test `AI_PROVIDER=openai` once credits are available;
+- capture any portal-specific field mapping deltas if the target Bitrix24 portal diverges later.
 
 ## Disclaimer
 

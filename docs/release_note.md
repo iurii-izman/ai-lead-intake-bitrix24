@@ -15,6 +15,8 @@ This release finalizes the public-facing packaging for the project. The reposito
 - Added a repeatable demo walkthrough, live demo script, and screenshot capture checklist.
 - Tightened release and publication checklists.
 - Kept the scope aligned with the staged epic plan and the source of truth.
+- Confirmed the real Bitrix24 trial validation baseline in `legacy` CRM mode.
+- Confirmed `review_needed` and admin manual action paths in the running app.
 
 ## Public-safe positioning
 - Synthetic data only.
@@ -24,10 +26,10 @@ This release finalizes the public-facing packaging for the project. The reposito
 - Demo data and seed flow are safe to share publicly.
 
 ## Use this text for GitHub
-AI Lead Intake for Bitrix24 now has a finalized public-facing package for GitHub. The repository is positioned as a demo/product prototype with production-capable architecture, synthetic data only, and no secrets or real PII. The README, sample demo data, seed script, release checklist, and portfolio assets now reflect the publication-ready state.
+AI Lead Intake for Bitrix24 now has a finalized public-facing package for GitHub. The repository is positioned as a demo/product prototype with production-capable architecture, synthetic data only, and no secrets or real PII. The README, sample demo data, seed script, validation runbook, and portfolio assets now reflect the publication-ready and runtime-validated state.
 
 ## Use this text for Notion
-AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for CRM intake automation. It accepts incoming requests, classifies them with AI, routes them deterministically, syncs into Bitrix24, and sends uncertain cases to human review. The repository is public-safe, uses synthetic data, and is prepared for portfolio review.
+AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for CRM intake automation. It accepts incoming requests, classifies them with AI, routes them deterministically, syncs into Bitrix24, and sends uncertain cases to human review. The repository is public-safe, uses synthetic data, and now includes a confirmed local runtime baseline with a real Bitrix24 trial portal in `legacy` mode.
 
 ## Links
 - README: `README.md`
@@ -37,5 +39,6 @@ AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for C
 - Demo script: `docs/demo_script.md`
 - Screenshot capture checklist: `docs/screenshots_capture_checklist.md`
 - Portfolio publication checklist: `docs/checklists/portfolio_publication_checklist.md`
+- Real Bitrix24 validation runbook: `docs/bitrix24_trial_runbook.md`
 - Demo requests: `demo_data/sample_requests.json`
 - Seed helper: `scripts/seed_demo_data.py`
