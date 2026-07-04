@@ -1,5 +1,11 @@
 # AI Lead Intake для Битрикс24
 
+[![CI](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml/badge.svg)](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.12-3776AB.svg?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)
+![Status](https://img.shields.io/badge/status-demo%20first-1F6FEB.svg)
+![Bitrix24](https://img.shields.io/badge/Bitrix24-real%20portal%20validated-0EA5E9.svg)
+
 > Demo case / product prototype. This is not a commercial deployment.
 > The architecture is production-capable; the first delivery is a portfolio/demo MVP.
 
@@ -37,6 +43,13 @@ AI Lead Intake for Bitrix24 is a production-capable demo-first backend prototype
 
 The system accepts an incoming request, stores it idempotently, classifies it through an AI boundary, applies routing rules, creates Bitrix24 entities, and keeps a processing timeline for review and debugging.
 
+## Why this repo is worth reviewing
+
+- It is not just scaffolded code; the runtime path was exercised against a real Bitrix24 trial portal.
+- It models a real intake-to-CRM workflow with AI, routing, manual review, and operational controls.
+- It keeps demo safety and production-thinking in the same codebase without mixing concerns.
+- It includes both code-level and runtime-level validation evidence.
+
 ## What it demonstrates
 
 - FastAPI application structure with explicit boundaries
@@ -47,6 +60,29 @@ The system accepts an incoming request, stores it idempotently, classifies it th
 - Public-safe masking for logs, UI, and docs
 - Basic Auth admin UI for operational review
 - Testable worker orchestration and deterministic routing
+
+## Validated runtime baseline
+
+Confirmed locally as of July 4, 2026:
+- `AI_PROVIDER=mock`
+- `BITRIX_MODE=real`
+- `BITRIX_CRM_MODE=legacy`
+- happy-path intake reached `completed`
+- `review_needed` path was reproduced in the running app
+- admin actions `approve`, `reprocess-ai`, `retry`, and `drop` were exercised
+- real Bitrix24 lead and task creation were confirmed against a trial portal
+
+Open validation item:
+- `AI_PROVIDER=openai` against the real Bitrix24 path is still pending because OpenAI credits were unavailable during the integration pass.
+
+## Quick links
+
+- [Project status](./docs/project_status.md)
+- [Architecture](./docs/architecture.md)
+- [Bitrix24 trial validation runbook](./docs/bitrix24_trial_runbook.md)
+- [Demo walkthrough](./docs/demo_walkthrough.md)
+- [Notion case](./docs/notion_case.md)
+- [Release note](./docs/release_note.md)
 
 ## Architecture
 
