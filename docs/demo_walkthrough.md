@@ -12,6 +12,9 @@ Use it when you need to:
 - capture screenshots against a predictable local state;
 - explain the system without relying on hidden setup knowledge.
 
+For a real Bitrix24 trial-portal validation path, use:
+- [Bitrix24 trial validation runbook](./bitrix24_trial_runbook.md)
+
 ## Demo mode assumptions
 
 Use the demo in fully synthetic local mode:
@@ -20,6 +23,9 @@ Use the demo in fully synthetic local mode:
 - `WORKER_AUTOSTART=true`
 - no real secrets
 - no real customer data
+
+This document is intentionally for mock-mode demo and presentation flow.
+It is not the primary runbook for the first real Bitrix24 integration pass.
 
 The walkthrough assumes the repository root is:
 

@@ -120,6 +120,9 @@ The repository also contains isolated seams for real integrations:
 
 These modes are present for architecture completeness, but the repository is still positioned as a demo/product prototype rather than a live production deployment.
 
+For the first controlled validation against a real trial portal, use:
+- [Bitrix24 trial validation runbook](./docs/bitrix24_trial_runbook.md)
+
 ## API
 
 Primary public endpoint:
@@ -198,6 +201,7 @@ Public-safe packaging artifacts:
 - [Technical specification](./docs/ai_lead_intake_bitrix24_tz_v1_0.md)
 - [Project brief](./docs/project_brief.md)
 - [Architecture](./docs/architecture.md)
+- [Bitrix24 trial validation runbook](./docs/bitrix24_trial_runbook.md)
 - [Implementation plan](./docs/implementation_plan.md)
 - [Project status](./docs/project_status.md)
 - [Epics](./docs/epics/)
@@ -215,17 +219,12 @@ The current codebase is intentionally demo-first. A stronger internal-production
 
 The goal is to evolve the same boundaries, not to replace the whole system.
 
-## Roadmap
+## Current Follow-up
 
-- Finish packaging and public-safe presentation polish
-- Expand publication assets and walkthrough materials
-- Strengthen deployment and operations profile for internal-production evolution
-
-## Next Epic
-
-Recommended next post-MVP epic:
-- [EPIC 11 — Demo Walkthrough & Visual Presentation](./docs/epics/EPIC_11_demo_walkthrough.md)
-- [Prompt](./docs/prompts/11_demo_walkthrough_cursor_prompt.md)
+Recommended next validation path:
+- run the mock baseline locally;
+- validate the real Bitrix24 boundary with `AI_PROVIDER=mock`;
+- capture any portal-specific mapping deltas before attempting broader hardening.
 
 ## Disclaimer
 
