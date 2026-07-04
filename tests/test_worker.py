@@ -310,6 +310,7 @@ def test_worker_retries_then_completes_after_transient_bitrix_failure(tmp_path: 
     assert final_request is not None
     assert final_request.status == RequestStatus.completed
     assert final_request.retry_count == 1
+    assert final_request.error_message is None
     assert len(bitrix_records) == 2
     assert {log.event for log in final_logs} >= {
         "worker_picked",

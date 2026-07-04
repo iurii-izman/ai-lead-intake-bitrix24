@@ -311,6 +311,26 @@ Fix:
    - any mapping overrides needed;
    - exact failure modes encountered.
 
+## Confirmed local baseline
+
+As of July 4, 2026, the following runtime checks were confirmed locally against a real Bitrix24 trial portal:
+
+- `AI_PROVIDER=mock`
+- `BITRIX_MODE=real`
+- `BITRIX_CRM_MODE=legacy`
+- happy-path intake reaches `completed`
+- local Bitrix entity records are created for `crm.lead` and `task`
+- a general low-signal request can be routed to `review_needed`
+- admin actions were exercised against live runtime records:
+  - `Approve`
+  - `Reprocess AI`
+  - `Retry Bitrix`
+  - `Drop`
+
+Important note:
+- `Retry Bitrix` can race with the in-process worker when `WORKER_AUTOSTART=true`, because `failed_retryable` records are automatically picked up by the worker queue.
+- For a controlled manual retry check, temporarily disable worker autostart or pause the worker loop first.
+
 ## If you want the next engineering step
 
 After the first portal validation, the most useful follow-up is:

@@ -30,6 +30,13 @@ As of July 3, 2026:
 - `ruff check .` passes.
 - The repository contains a runnable demo-first implementation, not just exploratory scaffolding.
 
+Additional runtime validation completed on July 4, 2026:
+
+- real Bitrix24 portal validation succeeded with `AI_PROVIDER=mock`, `BITRIX_MODE=real`, and `BITRIX_CRM_MODE=legacy`;
+- the happy path completed with created `crm.lead` and `task` records;
+- `review_needed` behavior was reproduced in the running app;
+- admin actions `approve`, `reprocess-ai`, `retry`, and `drop` were exercised against runtime records.
+
 This file now tracks the actual repository baseline rather than the earlier staged plan snapshot.
 
 ## Current priority

@@ -177,6 +177,7 @@ class IntakePipelineService:
             session.commit()
             return True
 
+        intake_request.error_message = None
         self._transition(
             session,
             intake_request,
