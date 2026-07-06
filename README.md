@@ -1,6 +1,7 @@
 # AI Lead Intake для Битрикс24
 
 [![CI](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml/badge.svg)](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/codeql.yml/badge.svg)](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/codeql.yml)
 ![Python](https://img.shields.io/badge/python-3.12-3776AB.svg?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)
 ![Status](https://img.shields.io/badge/status-demo%20first-1F6FEB.svg)
@@ -225,6 +226,15 @@ ruff check .
 ```
 
 Tests do not rely on real external network calls and use mock boundaries for AI and Bitrix24 behavior.
+
+## GitHub Automation
+
+Repository automation includes:
+- CI workflow with lint, tests, coverage XML, and artifact upload
+- CodeQL analysis for Python
+- dependency review on pull requests
+- Dependabot for `pip` and GitHub Actions updates
+- optional SonarCloud scan when `SONAR_TOKEN`, `SONAR_PROJECT_KEY`, and `SONAR_ORGANIZATION` are configured in GitHub
 
 ## Portfolio Assets
 

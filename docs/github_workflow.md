@@ -43,6 +43,10 @@ Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
 - Use [docs/release_note.md](./release_note.md) as the canonical public-safe release text.
 
 ## GitHub automation
-- CI runs `ruff check .` and `pytest -q`.
+- CI runs `ruff check .` and `pytest` with coverage XML and artifact upload.
+- CodeQL runs for Python analysis on `main`, pull requests, and a scheduled cadence.
+- Dependency review runs on pull requests.
+- Dependabot watches `pip` and GitHub Actions updates weekly.
+- Sonar workflow is prepared and runs when `SONAR_TOKEN`, `SONAR_PROJECT_KEY`, and `SONAR_ORGANIZATION` are configured in GitHub.
 - Use issue templates for verified bugs or audit tasks.
 - Use the PR template to keep review scope explicit.
