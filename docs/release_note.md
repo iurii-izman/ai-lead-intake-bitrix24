@@ -14,6 +14,8 @@ This release finalizes the public-facing packaging for the project. The reposito
 - Added synthetic demo requests and a local seed script for repeatable demos.
 - Added a repeatable demo walkthrough, live demo script, and screenshot capture checklist.
 - Tightened release and publication checklists.
+- Upgraded the Sonar GitHub Action to the fixed `v6` line and removed the open high-severity Dependabot alert.
+- Hardened admin action redirects around UUID-validated request identifiers.
 - Kept the scope aligned with the staged epic plan and the source of truth.
 - Confirmed the real Bitrix24 trial validation baseline in `legacy` CRM mode.
 - Confirmed `review_needed` and admin manual action paths in the running app.
@@ -27,6 +29,7 @@ This release finalizes the public-facing packaging for the project. The reposito
 
 ## Use this text for GitHub
 AI Lead Intake for Bitrix24 now has a finalized public-facing package for GitHub. The repository is positioned as a demo/product prototype with production-capable architecture, synthetic data only, and no secrets or real PII. The README, sample demo data, seed script, validation runbook, and portfolio assets now reflect the publication-ready and runtime-validated state.
+The current package also includes hardened admin redirect handling and an updated Sonar workflow with the known high-severity action vulnerability removed.
 
 ## Use this text for Notion
 AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for CRM intake automation. It accepts incoming requests, classifies them with AI, routes them deterministically, syncs into Bitrix24, and sends uncertain cases to human review. The repository is public-safe, uses synthetic data, and now includes a confirmed local runtime baseline with a real Bitrix24 trial portal in `legacy` mode.
@@ -42,3 +45,4 @@ AI Lead Intake for Bitrix24 is a production-capable demo/product prototype for C
 - Real Bitrix24 validation runbook: `docs/bitrix24_trial_runbook.md`
 - Demo requests: `demo_data/sample_requests.json`
 - Seed helper: `scripts/seed_demo_data.py`
+- Sonar workflow: `.github/workflows/sonar.yml`

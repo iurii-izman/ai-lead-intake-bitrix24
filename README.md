@@ -51,6 +51,13 @@ Additional validated runtime baseline as of July 4, 2026:
 - working CRM mode confirmed as `BITRIX_CRM_MODE=legacy`
 - happy path, `review_needed`, and admin manual actions were exercised in the running app
 
+## Security and Workflow Hardening
+
+- Sonar workflow upgraded to `SonarSource/sonarqube-scan-action@v6`.
+- Sonar CI now exits cleanly when Sonar credentials or project vars are absent.
+- Admin action redirects use UUID-validated request identifiers instead of free-form path interpolation.
+- Current local verification baseline: `ruff check .` and `pytest -q`.
+
 ## Functional Scope
 
 The repository covers:
