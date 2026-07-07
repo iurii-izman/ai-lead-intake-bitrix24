@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Annotated
+from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -110,12 +111,12 @@ def review_queue(
 )
 def request_detail(
     request: Request,
-    request_id: str,
+    request_id: UUID,
     db: Annotated[Session, Depends(get_db_session)],
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> HTMLResponse:
     service = AdminDashboardService(settings=settings)
-    detail = service.get_request_detail(db, request_id)
+    detail = service.get_request_detail(db, str(request_id))
     if detail is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Request not found")
 
@@ -132,65 +133,69 @@ def request_detail(
 
 @router.post("/admin/requests/{request_id}/approve", name="admin_request_approve")
 def approve_request(
-    request_id: str,
+    request_id: UUID,
     db: Annotated[Session, Depends(get_db_session)],
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
     try:
-        service.approve_request(db, request_id)
+        service.approve_request(db, str(request_id))
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
-        url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
+        url=_request_detail_url(request_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )
 
 
 @router.post("/admin/requests/{request_id}/retry", name="admin_request_retry")
 def retry_request(
-    request_id: str,
+    request_id: UUID,
     db: Annotated[Session, Depends(get_db_session)],
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
     try:
-        service.retry_request(db, request_id)
+        service.retry_request(db, str(request_id))
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
-        url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
+        url=_request_detail_url(request_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )
 
 
 @router.post("/admin/requests/{request_id}/drop", name="admin_request_drop")
 def drop_request(
-    request_id: str,
+    request_id: UUID,
     db: Annotated[Session, Depends(get_db_session)],
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
     try:
-        service.drop_request(db, request_id)
+        service.drop_request(db, str(request_id))
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
-        url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
+        url=_request_detail_url(request_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )
 
 
 @router.post("/admin/requests/{request_id}/reprocess-ai", name="admin_request_reprocess_ai")
 def reprocess_ai_request(
-    request_id: str,
+    request_id: UUID,
     db: Annotated[Session, Depends(get_db_session)],
     settings: Annotated[Settings, Depends(get_app_settings)],
 ) -> RedirectResponse:
     service = AdminDashboardService(settings=settings)
     try:
-        service.reprocess_ai_request(db, request_id)
+        service.reprocess_ai_request(db, str(request_id))
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     return RedirectResponse(
-        url=f"/admin/requests/{request_id}", status_code=status.HTTP_303_SEE_OTHER
+        url=_request_detail_url(request_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )
 
 
@@ -221,6 +226,10 @@ def _parse_status_filter(status_filter: str | None) -> RequestStatus | None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid status"
         ) from exc
+
+
+def _request_detail_url(request_id: UUID) -> str:
+    return str(router.url_path_for("admin_request_detail", request_id=str(request_id)))
 
 
 def _pretty_json(value: object) -> str:
