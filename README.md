@@ -72,7 +72,7 @@ keeps a processing timeline for review and debugging.
 - It keeps demo safety and production-thinking in the same codebase without mixing concerns.
 - It includes both code-level and runtime-level validation evidence.
 
-## What it demonstrates
+## Engineering Surface
 
 - FastAPI application structure with explicit boundaries
 - SQLite-backed MVP queue with portable domain model
