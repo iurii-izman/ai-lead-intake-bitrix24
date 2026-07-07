@@ -1,4 +1,4 @@
-# AI Lead Intake для Битрикс24
+# AI Lead Intake for Bitrix24
 
 [![CI](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml/badge.svg)](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/codeql.yml/badge.svg)](https://github.com/iurii-izman/ai-lead-intake-bitrix24/actions/workflows/codeql.yml)
@@ -11,6 +11,17 @@
 > The architecture is production-capable; the first delivery is a portfolio/demo MVP.
 
 Source of truth: `docs/ai_lead_intake_bitrix24_tz_v1_0.md`
+
+AI Lead Intake for Bitrix24 is a demo-first CRM automation backend for protected
+lead intake, AI classification, deterministic routing, Bitrix24 sync, and
+human review on uncertain cases.
+
+## What It Demonstrates
+
+- FastAPI application structure with explicit AI and CRM boundaries.
+- Demo-safe local runtime plus validated real Bitrix24 portal execution.
+- Review-gated automation instead of blind autonomous writes.
+- Portfolio-grade public packaging: CI, docs, validation evidence, and runbooks.
 
 ## Status
 
@@ -32,9 +43,9 @@ Additional validated runtime baseline as of July 4, 2026:
 - working CRM mode confirmed as `BITRIX_CRM_MODE=legacy`
 - happy path, `review_needed`, and admin manual actions were exercised in the running app
 
-## What it is
+## Functional Scope
 
-AI Lead Intake for Bitrix24 is a production-capable demo-first backend prototype for:
+The repository covers:
 - protected intake API;
 - AI-based lead classification;
 - deterministic routing;
@@ -42,7 +53,9 @@ AI Lead Intake for Bitrix24 is a production-capable demo-first backend prototype
 - human review for uncertain cases;
 - masked operational admin visibility.
 
-The system accepts an incoming request, stores it idempotently, classifies it through an AI boundary, applies routing rules, creates Bitrix24 entities, and keeps a processing timeline for review and debugging.
+The system accepts an incoming request, stores it idempotently, classifies it
+through an AI boundary, applies routing rules, creates Bitrix24 entities, and
+keeps a processing timeline for review and debugging.
 
 ## Why this repo is worth reviewing
 
