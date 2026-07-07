@@ -16,6 +16,14 @@ AI Lead Intake for Bitrix24 is a demo-first CRM automation backend for protected
 lead intake, AI classification, deterministic routing, Bitrix24 sync, and
 human review on uncertain cases.
 
+## Public Review Path
+
+- [Project status](docs/project_status.md)
+- [Bitrix24 runbook](docs/bitrix24_trial_runbook.md)
+- [Release checklist](docs/checklists/release_checklist.md)
+- [Security checklist](docs/checklists/security_checklist.md)
+- [Screenshots plan](docs/screenshots_plan.md)
+
 ## What It Demonstrates
 
 - FastAPI application structure with explicit AI and CRM boundaries.
