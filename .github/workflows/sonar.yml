@@ -58,7 +58,7 @@ jobs:
 
       - name: Sonar scan
         if: steps.sonar_config.outputs.enabled == 'true'
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v8
         env:
           SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
